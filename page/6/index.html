@@ -371,7 +371,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/10/hacker101-ctf/hacker101-ctf/micro-cms_v1/flag0/README/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/10/hacker101-ctf/hacker101-ctf/h1_thermostat/flag1/README/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -387,7 +387,7 @@
         
           <h1 class="post-title" itemprop="name headline">
               
-              <a href="/2019/07/10/hacker101-ctf/hacker101-ctf/micro-cms_v1/flag0/README/" class="post-title-link" itemprop="url">Untitled</a>
+              <a href="/2019/07/10/hacker101-ctf/hacker101-ctf/h1_thermostat/flag1/README/" class="post-title-link" itemprop="url">Untitled</a>
             
           </h1>
         
@@ -419,21 +419,48 @@
 
       
           
-            <h1 id="Micro-CMS-v1-FLAG0"><a href="#Micro-CMS-v1-FLAG0" class="headerlink" title="Micro-CMS v1 - FLAG0"></a>Micro-CMS v1 - FLAG0</h1><h2 id="0x00-Index"><a href="#0x00-Index" class="headerlink" title="0x00 Index"></a>0x00 Index</h2><p><img src="./imgs/index.jpg" alt></p>
-<h2 id="0x01-Create-New-Page"><a href="#0x01-Create-New-Page" class="headerlink" title="0x01 Create New Page"></a>0x01 Create New Page</h2><p><img src="./imgs/create.jpg" alt></p>
-<p><img src="./imgs/9.jpg" alt></p>
-<p>It shows <strong>id=9</strong></p>
-<h2 id="0x02-Check-Other-Pages"><a href="#0x02-Check-Other-Pages" class="headerlink" title="0x02 Check Other Pages"></a>0x02 Check Other Pages</h2><p>The Testing page is 1.</p>
-<p><img src="./imgs/1.jpg" alt></p>
-<p>The Markdown Test page is 2.</p>
-<p><img src="./imgs/2.jpg" alt></p>
-<p>Should be something between 2 - 9.</p>
-<p>Page 3, 4, 5, 6, 8 get 404 error.</p>
-<p><img src="./imgs/404.jpg" alt></p>
-<p>But Page 7 has 403 Fobidden error. Need to take a look of Page 7.</p>
-<p><img src="./imgs/403.jpg" alt></p>
-<h2 id="0x03-Edit-Page"><a href="#0x03-Edit-Page" class="headerlink" title="0x03 Edit Page"></a>0x03 Edit Page</h2><p><img src="./imgs/edit.jpg" alt></p>
-<h2 id="0x04-FLAG"><a href="#0x04-FLAG" class="headerlink" title="0x04 FLAG"></a>0x04 FLAG</h2><p>Change Page id and get the FLAG.</p>
+            <h1 id="H1-Thermostat-FLAG1"><a href="#H1-Thermostat-FLAG1" class="headerlink" title="H1 Thermostat - FLAG1"></a>H1 Thermostat - FLAG1</h1><h2 id="0x00-Params"><a href="#0x00-Params" class="headerlink" title="0x00 Params"></a>0x00 Params</h2><p>There are different messages sending through. We can decode them with <a href="https://www.base64decode.org/" target="_blank" rel="noopener">base64</a>.</p>
+<table>
+<thead>
+<tr>
+<th>encoded</th>
+<th>readable</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>eyJjbWQiOiJnZXRUZW1wIn0</td>
+<td>{“cmd”:”getTemp”}</td>
+</tr>
+<tr>
+<td>eyJ0ZW1wZXJhdHVyZSI6IDc3LCAic3VjY2VzcyI6IHRydWV9</td>
+<td>{“temperature”: 77, “success”: true}</td>
+</tr>
+<tr>
+<td>eyJjbWQiOiJzZXRUZW1wIiwidGVtcCI6Nzd9</td>
+<td>{“cmd”:”setTemp”,”temp”:77}</td>
+</tr>
+<tr>
+<td>eyJjbWQiOiJzZXRUZW1wIiwidGVtcCI6NzB9</td>
+<td>{“cmd”:”setTemp”,”temp”:70}</td>
+</tr>
+<tr>
+<td>eyJzdWNjZXNzIjogdHJ1ZX0=</td>
+<td>{“success”: true}</td>
+</tr>
+</tbody></table>
+<p>As the app shows current temperature is 73 and target 70.</p>
+<p><img src="./imgs/app.jpg" alt></p>
+<p>Tried to manually change the temperature by encode </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//eyJjbWQiOiJzZXRUZW1wIiwidGVtcCI6NzN9</span></span><br><span class="line">base64(&#123;<span class="string">"cmd"</span>:<span class="string">"setTemp"</span>,<span class="string">"temp"</span>:<span class="number">73</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>But got an error as following</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//eyJzdWNjZXNzIjogZmFsc2UsICJlcnJvciI6ICJNQUMgZmFpbHVyZSJ9</span><br><span class="line">&#123;<span class="attr">"success"</span>: <span class="literal">false</span>, <span class="attr">"error"</span>: <span class="string">"MAC failure"</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x01-Check-Source"><a href="#0x01-Check-Source" class="headerlink" title="0x01 Check Source"></a>0x01 Check Source</h2><p>Something wrong with that MAC. Need go back to check the source for some help.</p>
+<p><img src="./imgs/src.jpg" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">classes.dex -&gt; com -&gt; hacker101 -&gt; level11 -&gt; PlayloadRequest</span><br></pre></td></tr></table></figure>
+
+<p>Both flags can be found here.</p>
 <p><img src="./imgs/flag.jpg" alt></p>
 
           

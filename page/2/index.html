@@ -190,7 +190,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/10/hacker101-ctf/hacker101-ctf/bugdb_v1/README/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/10/hacker101-ctf/hacker101-ctf/micro-cms_v1/README/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -206,7 +206,7 @@
         
           <h1 class="post-title" itemprop="name headline">
               
-              <a href="/2019/07/10/hacker101-ctf/hacker101-ctf/bugdb_v1/README/" class="post-title-link" itemprop="url">Untitled</a>
+              <a href="/2019/07/10/hacker101-ctf/hacker101-ctf/micro-cms_v1/README/" class="post-title-link" itemprop="url">Untitled</a>
             
           </h1>
         
@@ -238,10 +238,25 @@
 
       
           
-            <h1 id="BugDB-v1"><a href="#BugDB-v1" class="headerlink" title="BugDB v1"></a>BugDB v1</h1><h2 id="Flag0-–-Found"><a href="#Flag0-–-Found" class="headerlink" title="Flag0 – Found"></a><a href="./flag0">Flag0</a> – Found</h2><ul>
-<li>What can you see? What can you not see?</li>
-<li>What data types are involved?</li>
-<li>Have you tried querying different endpoints?</li>
+            <h1 id="Micro-CMS-v1"><a href="#Micro-CMS-v1" class="headerlink" title="Micro-CMS v1"></a>Micro-CMS v1</h1><h2 id="Flag0-–-Found"><a href="#Flag0-–-Found" class="headerlink" title="Flag0 – Found"></a><a href="./flag0">Flag0</a> – Found</h2><ul>
+<li>Try creating a new page</li>
+<li>How are pages indexed?</li>
+<li>Look at the sequence of IDs</li>
+<li>If the front door doesn’t open, try the window</li>
+<li>In what ways can you retrieve page contents?</li>
+</ul>
+<h2 id="Flag1-–-Found"><a href="#Flag1-–-Found" class="headerlink" title="Flag1 – Found"></a><a href="./flag1">Flag1</a> – Found</h2><ul>
+<li>Make sure you tamper with every input</li>
+<li>Have you tested for the usual culprits? XSS, SQL injection, path injection</li>
+<li>Bugs often occur when an input should always be one type and turns out to be another</li>
+<li>Remember, form submissions aren’t the only inputs that come from browsers</li>
+</ul>
+<h2 id="Flag2-–-Found"><a href="#Flag2-–-Found" class="headerlink" title="Flag2 – Found"></a><a href="./flag2">Flag2</a> – Found</h2><ul>
+<li>Sometimes a given input will affect more than one page</li>
+<li>The bug you are looking for doesn’t exist in the most obvious place this input is shown</li>
+</ul>
+<h2 id="Flag3-–-Found"><a href="#Flag3-–-Found" class="headerlink" title="Flag3 – Found"></a><a href="./flag3">Flag3</a> – Found</h2><ul>
+<li>Script tags are great, but what other options do you have?</li>
 </ul>
 
           
@@ -884,6 +899,100 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/10/hacker101-ctf/hacker101-ctf/a_little_something_to_get_you_started/flag0/README/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+              
+              <a href="/2019/07/10/hacker101-ctf/hacker101-ctf/a_little_something_to_get_you_started/flag0/README/" class="post-title-link" itemprop="url">Untitled</a>
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-07-10 07:35:50" itemprop="dateCreated datePublished" datetime="2019-07-10T07:35:50+08:00">2019-07-10</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-08-14 16:03:48" itemprop="dateModified" datetime="2019-08-14T16:03:48+08:00">2019-08-14</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <h1 id="A-little-something-to-get-you-started-FLAG0"><a href="#A-little-something-to-get-you-started-FLAG0" class="headerlink" title="A little something to get you started - FLAG0"></a>A little something to get you started - FLAG0</h1><h2 id="0x00-Index"><a href="#0x00-Index" class="headerlink" title="0x00 Index"></a>0x00 Index</h2><p><img src="./imgs/index.png" alt></p>
+<h2 id="0x01-Inspect-Element"><a href="#0x01-Inspect-Element" class="headerlink" title="0x01 Inspect Element"></a>0x01 Inspect Element</h2><p>There is an background image here but not show on the page.</p>
+<p><img src="./imgs/bg_img.png" alt></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">	body &#123;</span><br><span class="line">		background-image: url("background.png");</span><br><span class="line">	&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="0x02-Go-Investigate"><a href="#0x02-Go-Investigate" class="headerlink" title="0x02 Go Investigate"></a>0x02 Go Investigate</h2><p><a href="http://127.0.0.1:5001/xxxxxxxxxx/background.png" target="_blank" rel="noopener">http://127.0.0.1:5001/xxxxxxxxxx/background.png</a></p>
+<p><img src="./imgs/flag.png" alt></p>
+
+          
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/10/hacker101-ctf/hacker101-ctf/bugdb_v1/flag0/README/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -939,102 +1048,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">query&#123;</span><br><span class="line">  user &#123;</span><br><span class="line">    edges &#123;</span><br><span class="line">      node &#123;</span><br><span class="line">        id</span><br><span class="line">        username</span><br><span class="line">        bugs &#123;</span><br><span class="line">          pageInfo &#123;</span><br><span class="line">            startCursor</span><br><span class="line">            endCursor</span><br><span class="line">          &#125;</span><br><span class="line">          edges &#123;</span><br><span class="line">            cursor</span><br><span class="line">            node &#123;</span><br><span class="line">              id</span><br><span class="line">              reporterId</span><br><span class="line">              text</span><br><span class="line">              private</span><br><span class="line">              reporter &#123;</span><br><span class="line">                id</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>And here comes the flag.</p>
-<p><img src="./imgs/flag.jpg" alt></p>
-
-          
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/10/hacker101-ctf/hacker101-ctf/bugdb_v2/flag0/README/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2019/07/10/hacker101-ctf/hacker101-ctf/bugdb_v2/flag0/README/" class="post-title-link" itemprop="url">Untitled</a>
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-07-10 07:35:50" itemprop="dateCreated datePublished" datetime="2019-07-10T07:35:50+08:00">2019-07-10</time>
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            <h1 id="BugDB-v2-FLAG0"><a href="#BugDB-v2-FLAG0" class="headerlink" title="BugDB v2 - FLAG0"></a>BugDB v2 - FLAG0</h1><h2 id="0x00-Overview"><a href="#0x00-Overview" class="headerlink" title="0x00 Overview"></a>0x00 Overview</h2><p>Pretty much as <a href="../../bugdb_v1/flag0">BugDB v1</a>. There is only a tiny difference on mutate the data.</p>
-<h2 id="0x01-Take-a-Tour"><a href="#0x01-Take-a-Tour" class="headerlink" title="0x01 Take a Tour"></a>0x01 Take a Tour</h2><h3 id="allUsers"><a href="#allUsers" class="headerlink" title="allUsers"></a>allUsers</h3><p>Users no longer have their bugs.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">query&#123;</span><br><span class="line">  allUsers &#123;</span><br><span class="line">    edges &#123;</span><br><span class="line">      node &#123;</span><br><span class="line">        id</span><br><span class="line">        username</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="./imgs/allUsers.jpg" alt></p>
-<h3 id="allBugs"><a href="#allBugs" class="headerlink" title="allBugs"></a>allBugs</h3><p>There is only one bug in array. And the one shows NOT PRIVATE status.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">query&#123;</span><br><span class="line">  allBugs &#123;</span><br><span class="line">    id</span><br><span class="line">    reporter &#123;</span><br><span class="line">      id</span><br><span class="line">      username</span><br><span class="line">    &#125;</span><br><span class="line">    reporterId</span><br><span class="line">    text</span><br><span class="line">    private</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="./imgs/allBugs.jpg" alt></p>
-<p>And the bug id can be <a href="https://www.base64decode.org/" target="_blank" rel="noopener">decoded</a> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">base64decode(QnVnczox) = Bugs:1</span><br></pre></td></tr></table></figure>
-
-<h3 id="mutation"><a href="#mutation" class="headerlink" title="mutation"></a>mutation</h3><p>Try modify Bugs:2</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mutation&#123;</span><br><span class="line">  modifyBug(id:2, private:false) &#123;</span><br><span class="line">    ok</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="./imgs/mutation.jpg" alt></p>
-<h2 id="0x02-FLAG"><a href="#0x02-FLAG" class="headerlink" title="0x02 FLAG"></a>0x02 FLAG</h2><p>Go check back allBugs again.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">query&#123;</span><br><span class="line">  allBugs &#123;</span><br><span class="line">    id</span><br><span class="line">    reporter &#123;</span><br><span class="line">      id</span><br><span class="line">      username</span><br><span class="line">    &#125;</span><br><span class="line">    reporterId</span><br><span class="line">    text</span><br><span class="line">    private</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Get the FLAG</p>
 <p><img src="./imgs/flag.jpg" alt></p>
 
           
