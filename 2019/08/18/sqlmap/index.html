@@ -62,7 +62,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="一、Sqlmap是什么Sqlmap是开源的自动化SQL注入工具，由Python写成，具有如下特点：  完全支持MySQL、Oracle、PostgreSQL、Microsoft SQL Server、Microsoft Access、IBM DB2、SQLite、Firebird、Sybase、SAP MaxDB、HSQLDB和Informix等多种数据库管理系统。 完全支持布尔型盲注、时间型盲注">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-19T06:53:02.764Z">
+<meta property="og:updated_time" content="2019-08-19T06:55:59.294Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sqlmap">
 <meta name="twitter:description" content="一、Sqlmap是什么Sqlmap是开源的自动化SQL注入工具，由Python写成，具有如下特点：  完全支持MySQL、Oracle、PostgreSQL、Microsoft SQL Server、Microsoft Access、IBM DB2、SQLite、Firebird、Sybase、SAP MaxDB、HSQLDB和Informix等多种数据库管理系统。 完全支持布尔型盲注、时间型盲注">
@@ -237,7 +237,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-08-19 14:53:02" itemprop="dateModified" datetime="2019-08-19T14:53:02+08:00">2019-08-19</time>
+                <time title="Modified: 2019-08-19 14:55:59" itemprop="dateModified" datetime="2019-08-19T14:55:59+08:00">2019-08-19</time>
               </span>
             
           
@@ -370,7 +370,7 @@
 <p>当“–-level”设置为5或更高时，Sqlmap会检测Host是否存在注入漏洞，关于“–-level”的更多信息见下文。</p>
 <h3 id="7-Referer"><a href="#7-Referer" class="headerlink" title="7.Referer"></a>7.Referer</h3><p>参数：–-referer</p>
 <p>使用该参数可以指定HTTP头中的Referer值。Sqlmap发送的HTTP请求头部默认无Referer字段。</p>
-<p>当“–-level”设置为3或更高时，Sqlmap会检测Referer是否存在注入漏洞，关于“–-level”的更多信息见下文。</p>
+<p>当“–level”设置为3或更高时，Sqlmap会检测Referer是否存在注入漏洞，关于“–-level”的更多信息见下文。</p>
 <h3 id="8-额外的HTTP头"><a href="#8-额外的HTTP头" class="headerlink" title="8.额外的HTTP头"></a>8.额外的HTTP头</h3><p>参数：-H、–-headers</p>
 <p>使用该参数可以在Sqlmap发送的HTTP请求报文头部添加字段，若添加多个字段，用“\n”分隔。如命令：</p>
 <p><code>python sqlmap.py -u &quot;http://192.168.56.101:8080/&quot; -v 5 --headers &quot;X-A:A\nX-B: B&quot;</code></p>
